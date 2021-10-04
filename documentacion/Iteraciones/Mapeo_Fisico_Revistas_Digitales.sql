@@ -2,6 +2,7 @@
 
 CREATE DATABASE Revistas_Digitales;
 
+USE Revistas_Digitales;
 
 CREATE TABLE usuario(contraseña VARCHAR(50) NOT NULL, nombre VARCHAR(35) NOT NULL, rol TINYINT NOT NULL, CONSTRAINT PK_usuario PRIMARY KEY (nombre));
 

@@ -1,0 +1,26 @@
+<body>
+    <form [formGroup] ="registroForm"  (ngSubmit)= "crearUsuarioNuevo()" id="form">
+        <div class="form">
+            <h1>Registro</h1>
+            <h4>Llena los siguientes Campos</h4>  
+            <div class="grupo">
+                <input formControlName = "usuario" type="text" name="" id="name" required = "text"><span class="barra"></span>
+                <label for="">Nombre de Usuario</label>
+            </div>
+            <div class="grupo">
+                <input formControlName = "password" type="password" name="" id="password" required = "password"  ><span class="barra"></span>
+                <label for="">Password</label>
+            </div>
+            <div class="grupo" >
+                <h6>Seleccione el tipo de Cuenta</h6>
+                <select class="form-select" aria-label="Default select example" formControlName  = "tipoCuenta" required>
+                    <option value="1">{{editor}}</option>
+                    <option value="2">{{lector}}</option>
+                  </select>
+            </div>
+            <button [disabled] = "registroForm.invalid" type="submit">Registrarse</button>
+        </div>
+    </form>
+</body>
+
+

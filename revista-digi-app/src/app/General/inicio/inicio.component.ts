@@ -1,19 +1,16 @@
+import { Usuario } from './../../../modelo/Usuario/Usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
-  
   loginForm!: FormGroup;
-  
-  constructor(private formBuilder: FormBuilder) {
-    
-  }
+  usuario!: Usuario;
 
-  
+  constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       usuario: [null, Validators.required],
@@ -21,5 +18,10 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  
+
+  public crearUsuario(){
+    if (this.loginForm.valid) {
+      
+    }
+  }
 }
