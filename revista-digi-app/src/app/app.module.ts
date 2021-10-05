@@ -8,6 +8,8 @@ import { RegistroComponent } from './General/registro/registro.component';
 import { NavbarComponent } from './General/navbar/navbar.component';
 import { FooterComponent } from './General/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditorHomeComponent } from './Editor/editor-home/editor-home.component';
+import { PublicRevistaComponent } from './Editor/public-revista/public-revista.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     InicioComponent,
     RegistroComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    EditorHomeComponent,
+    PublicRevistaComponent
   ],
   imports: [
     BrowserModule,
