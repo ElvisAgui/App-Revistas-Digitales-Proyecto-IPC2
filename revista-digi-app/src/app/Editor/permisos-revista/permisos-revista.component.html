@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="container">
+      <div class="d-flex justify-content-center h-100">
+        <div class="card">
+          <div class="card-header">
+            <h1>Actulizar Permisos de  --nombreRevista</h1>
+          </div>
+          <div class="card-body"> 
+              <div class="form-group">
+                <h4>
+                    Permisos para Suscripciones 
+                </h4>
+                <div class="input-group">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected>Selecciones una opcion</option>
+                        <option value="0">Permitir</option>
+                        <option value="1">Bloquear</option>
+                       
+                      </select>      
+                </div>
+                 <h4>
+                    Permisos para Comentarios 
+                </h4>
+                <div class="input-group">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected>Seleccione un opcion</option>
+                        <option value="0">Permitir</option>
+                        <option value="1">Bloquear</option>
+                      </select>     
+                </div>
+                <h4>
+                    Permisos para Me Gusta 
+                </h4>
+                <div class="input-group">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected>Selecciones una opcion</option>
+                        <option value="0">Permitir</option>
+                        <option value="1">Bloquear</option>
+                       
+                      </select>      
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                  Actulizar
+                </button>
+              </div>
+          </div>
+        </div>
+        <div class="card2">
+            <div class="card-header">
+              <h1>Lista Comentarios</h1>
+            </div>
+            <div class="card-body"> 
+                <div class="form-group">
+                  <h6>
+                    Archivo (pdf) de la nueva edicion
+                  </h6>
+                  <div class="input-group">
+                    <input type="file" aria-label="First name" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button type="button" class="btn btn-primary btn-lg btn-block">
+                    Actulizar
+                  </button>
+                </div>
+            </div>
+          </div>
+          <div class="card3">
+            <div class="card-header">
+              <h1>Lista de Me gusta</h1>
+            </div>
+            <div class="card-body"> 
+                <div class="form-group">
+                    <table class="table table-success table-striped">
+                        <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Usuario</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+<app-footer></app-footer>

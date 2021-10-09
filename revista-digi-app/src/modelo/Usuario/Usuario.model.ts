@@ -1,36 +1,36 @@
 export class Usuario {
-  private _usuario: String;
-  private _contra: String;
-  private _rol: String;
+  usuario: String;
+  password: String;
+  tipoCuenta: number;
 
-  constructor(usuario: String, contra: String, rol: String) {
-    this._usuario = usuario;
-    this._contra = contra;
-    this._rol = rol;
+  constructor(usuario: String, password: String, tipoCuenta: number) {
+    this.usuario = usuario;
+    this.password = password;
+    this.tipoCuenta = tipoCuenta;
   }
 
-  get usuario() {
-    return this._usuario;
+  get getUsuario() {
+    return this.usuario;
   }
 
-  get contra() {
-    return this._contra;
+  get getPassword() {
+    return this.password;
   }
 
-  set usuario(usuario: String) {
-    this._usuario = usuario;
+  set setUsuario(usuario: String) {
+    this.usuario = usuario;
   }
 
-  set contra(contra: String) {
-    this._contra = contra;
+  set setPassword(contra: String) {
+    this.password = contra;
   }
 
-  set rol(rol: String) {
-    this._rol = rol;
+  set setTipoCuenta(rol: number) {
+    this.tipoCuenta = rol;
   }
 
-  get rol() {
-    return this._rol ;
+  get getTipoCuenta() {
+    return this.tipoCuenta ;
   }
 
 

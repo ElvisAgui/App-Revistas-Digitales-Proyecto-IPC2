@@ -15,7 +15,7 @@
           <h2>Iniciar Sesion</h2>
         </div>
         <div class="card-body">
-          <form [formGroup]="loginForm">
+          <form [formGroup]="loginForm" (ngSubmit)= "crearUsuarioNuevo()">
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"
@@ -53,7 +53,9 @@
         </div>
         <div class="card-footer">
           <div class="d-flex justify-content-center links">
-            No tiene Cuenta?<a href="#">Registrarme</a>
+            No ienes Cuenta<button class="btn btn-link" (click)="registrarse()">
+              Registrarme
+            </button>
           </div>
         </div>
       </div>

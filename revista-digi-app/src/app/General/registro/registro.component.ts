@@ -2,6 +2,11 @@ import { Usuario } from './../../../modelo/Usuario/Usuario.model';
 import { LoginService } from './../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NvarServiceService } from 'src/app/services/nvar-service.service';
+import Swal from 'sweetalert2'
+import { InicioComponent } from '../inicio/inicio.component';
+
 
 @Component({
   selector: 'app-registro',
@@ -10,13 +15,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
   registroForm!: FormGroup;
-  usuarioNuevo!: Usuario;
+  usuario!: Usuario;
   editor = 'Editor';
   lector = 'Lector';
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: LoginService
+    private service: LoginService,
+    private router: Router,
+    private navrService: NvarServiceService
   ) {}
   ngOnInit(): void {
     this.registroForm = this.formBuilder.group({
@@ -31,15 +38,44 @@ export class RegistroComponent implements OnInit {
       this.service.crearUsuario(this.registroForm.value).subscribe(
         (created: Usuario) => {
           this.registroForm.reset({
-            usuario: null,
-            password: null,
-            tipoCuenta: null,
+            "usuario": null,
+            "password": null,
+            "tipoCuenta": null,
           });
+          this.navrService.usuario = created;
+          this.verificacion(created);
         },
         (erro: any) => {
           //imprimir erro
-        }
-      );
+        });
     }
+  }
+
+  public verificacion(usuario: Usuario){
+    if ( usuario != null) {
+      InicioComponent.autenticado=true;
+      this.popAfirmation();
+      this.router.navigate(['home-editor']);
+    }else{
+      InicioComponent.autenticado=false;
+      this.popErro();
+      
+    }
+  }
+
+  public popAfirmation(){
+    Swal.fire(
+      'BIENVENIDO',
+      'Importante configurar Tu Perfil',
+      'success'
+    )
+  }
+
+  public popErro(){
+    Swal.fire(
+      'Error',
+      'Algun valor incorrecto',
+      'error'
+    )
   }
 }

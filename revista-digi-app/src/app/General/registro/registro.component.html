@@ -14,6 +14,7 @@
             <div class="grupo" >
                 <h6>Seleccione el tipo de Cuenta</h6>
                 <select class="form-select" aria-label="Default select example" formControlName  = "tipoCuenta" required>
+                    <option  [ngValue]="null" selected>categorias existentes</option>
                     <option value="1">{{editor}}</option>
                     <option value="2">{{lector}}</option>
                   </select>

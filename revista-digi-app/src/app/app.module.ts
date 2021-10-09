@@ -10,6 +10,10 @@ import { FooterComponent } from './General/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditorHomeComponent } from './Editor/editor-home/editor-home.component';
 import { PublicRevistaComponent } from './Editor/public-revista/public-revista.component';
+import { ListRevistaComponent } from './Editor/list-revista/list-revista.component';
+import { ActulizarRevistaComponent } from './Editor/actulizar-revista/actulizar-revista.component';
+import { EdicionComponent } from './Editor/edicion/edicion.component';
+import { PermisosRevistaComponent } from './Editor/permisos-revista/permisos-revista.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { PublicRevistaComponent } from './Editor/public-revista/public-revista.c
     NavbarComponent,
     FooterComponent,
     EditorHomeComponent,
-    PublicRevistaComponent
+    PublicRevistaComponent,
+    ListRevistaComponent,
+    ActulizarRevistaComponent,
+    EdicionComponent,
+    PermisosRevistaComponent
   ],
   imports: [
     BrowserModule,

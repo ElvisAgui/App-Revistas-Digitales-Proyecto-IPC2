@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="conteiner">
+        <div class="card-header">
+            <h2 class="h1 text-center">Mis Revistas Publicadas</h2>
+            <table class="table table-success table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>REVISTA</th>
+                    <th>MODIFICACIONES</th> 
+                    <th>ACTUALIZAR</th>                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Las Nuevas Culturas de la Juventud</td>
+                    <td>
+                      <button class="btn btn-success">General</button>
+                      <button class="btn btn-warning" (click) = " PrmisosClick()">Permisos</button>
+                    </td>
+                    <td>
+                      <button class="btn btn-danger" (click)="edicionClick()" >Edicion</button>
+                      <button class="btn btn-info">Etiquetas</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>La cocina Italian</td>
+                    <td>
+                      <button class="btn btn-success">General</button>
+                      <button class="btn btn-warning" (click) = " PrmisosClick()">Permisos</button>
+                    </td>
+                    <td>
+                      <button class="btn btn-danger" (click)="edicionClick()">Edicion</button>
+                      <button class="btn btn-info">Etiquetas</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
