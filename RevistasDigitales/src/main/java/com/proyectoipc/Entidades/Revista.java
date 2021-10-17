@@ -1,6 +1,7 @@
 package com.proyectoipc.Entidades;
 
-import javax.servlet.http.Part;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,12 +16,13 @@ public class Revista {
     private String tipoRevista;
     private Integer precio;
     private String editor;
+    private List<Etiqueta> etiquetas= new ArrayList<>();
 
     public Revista() {
 
     }
 
-    public Revista(String titulo, String categoria, String categoriaNueva, String descripcion, String tipoRevista, Integer precio, Part revista, String editor) {
+    public Revista(String titulo, String categoria, String categoriaNueva, String descripcion, String tipoRevista, Integer precio, String editor) {
         this.titulo = titulo;
         this.categoria = categoria;
         this.categoriaNueva = categoriaNueva;
@@ -29,6 +31,8 @@ public class Revista {
         this.precio = precio;
         this.editor = editor;
     }
+
+    
 
     public String getCategoriaNueva() {
         return categoriaNueva;
@@ -86,9 +90,20 @@ public class Revista {
         this.editor = editor;
     }
 
+    public List<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(List<Etiqueta> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Revista{" + "titulo=" + titulo + ", categoriaNueva=" + categoriaNueva + ", categoria=" + categoria + ", descripcion=" + descripcion + ", tipoRevista=" + tipoRevista + ", precio=" + precio + ", editor=" + editor + '}';
     }
+    
 
 }

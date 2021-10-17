@@ -1,3 +1,5 @@
+import { Etiqueta } from "./etiqueta";
+
 export class Revista {
   titulo!: String;
   categoria!: String;
@@ -6,8 +8,9 @@ export class Revista {
   tipoRevista!: String;
   precio!: String;
   editor!: String;
+  etiquetas: Etiqueta[] = [];
  
-  constructor(titulo: String, categoria: String, categoriaNueva: String, descripcion: String, precio: String, tipoRevista: String, editor:String){
+  constructor(titulo: String, categoria: String, categoriaNueva: String, descripcion: String, precio: String, tipoRevista: String, editor:String, etiquetas: Etiqueta[]){
     this.titulo = titulo;
     this.categoria = categoria;
     this.categoriaNueva = categoriaNueva;
@@ -16,6 +19,7 @@ export class Revista {
     this.precio = precio;
     this.descripcion = descripcion;
     this.editor = editor;
+    this.etiquetas = etiquetas;
   }
 
 }

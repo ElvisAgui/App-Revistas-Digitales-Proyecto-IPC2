@@ -19,6 +19,7 @@ export class PublicRevistaComponent implements OnInit {
   etiquetas: Etiqueta[] = [];
   categorias: Categoria[] = [];
   selectedFile: File | null = null;
+  revista!: Revista;
   
   constructor(
     private router: Router,
@@ -49,7 +50,9 @@ export class PublicRevistaComponent implements OnInit {
 
   public publicarRevista() {
     if (this.publicRForm.valid && this.selectedFile != null) {
-      this.file.crearRevista(this.publicRForm.value).subscribe(
+      this.revista = this.publicRForm.value;
+      this.revista.etiquetas = this.etiquetas;
+      this.file.crearRevista(this.revista).subscribe(
         (data) => {
           this.enviarRevista();
         },
@@ -84,6 +87,7 @@ export class PublicRevistaComponent implements OnInit {
       console.log(this.selectedFile);
     }
   }
+  
   onchange() {
     console.log(this.etiquetas);
   }

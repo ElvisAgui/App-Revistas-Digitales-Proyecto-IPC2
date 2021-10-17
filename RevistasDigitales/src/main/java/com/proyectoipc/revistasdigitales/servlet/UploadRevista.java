@@ -1,6 +1,8 @@
 package com.proyectoipc.revistasdigitales.servlet;
 
+import com.proyectoipc.Entidades.Etiqueta;
 import com.proyectoipc.Entidades.Revista;
+import com.proyectoipc.SQL.EtiquetaSQL;
 import com.proyectoipc.SQL.RevistaSQL;
 import com.proyectoipc.comvert.RevistaConvert;
 import java.io.BufferedReader;
@@ -26,7 +28,8 @@ public class UploadRevista extends HttpServlet {
 
     private Revista revista;
     private RevistaSQL revistaSQL;
-
+    private EtiquetaSQL etiqueta;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -49,6 +52,7 @@ public class UploadRevista extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
        int version = this.numVersion();
+       this.etiqueta = new EtiquetaSQL();
        this.revistaSQL = new RevistaSQL();
         Part file = request.getPart("datafile");
         String fileName = file.getHeader("Content-type");
@@ -63,8 +67,9 @@ public class UploadRevista extends HttpServlet {
         System.out.println(revista.toString());
         this.revistaSQL.guardarCategoria(revista);
         this.revistaSQL.guardarRevista(revista);
+        this.etiqueta.guardarEtiquetas(revista);
         this.revistaSQL.guardarEdicion(revista, archivo.toString(), fileName);
-
+        
     }
 
     @Override
