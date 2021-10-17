@@ -2,37 +2,61 @@
 <body>
   <div class="container">
     <div class="card-header-danger">
-      <form  [formGroup]="publicRForm" (ngSubmit)= "publicarRevista()" class="row g-4" >
+      <form
+        [formGroup]="publicRForm"
+        (ngSubmit)="publicarRevista()"
+        class="row g-4"
+      >
         <div class="col-12">
           <br />
           <h1 class="h1">Formulario Para Publicar Revista</h1>
         </div>
         <div class="col-md-6">
           <h4>Titulo de la Revista</h4>
-          <input formControlName="tituloRevista" type="text" class="form-control" />
+          <input
+            formControlName="titulo"
+            type="text"
+            class="form-control"
+          />
         </div>
         <div class="col-md-4">
-          <h4 >Categoria</h4>
-          <select formControlName="categoria" id="inputState" class="form-select">
-            <option  [ngValue]="null" selected>categorias existentes</option>
-            <option *ngFor="let etiqueta of etiquetas">{{etiqueta.etiqueta}}</option>
+          <h4>Categoria</h4>
+          <select
+            formControlName="categoria"
+            id="inputState"
+            class="form-select"
+          >
+            <option [ngValue]="null" selected>categorias existentes</option>
+            <option *ngFor="let categoira of categorias">
+              {{ categoira.categoria }}
+            </option>
           </select>
         </div>
-        <div class="col-md-2" [hidden] = "publicRForm.controls.categoria.valid">
+        <div class="col-md-2" [hidden]="publicRForm.controls.categoria.value != null">
           <h4>Crear</h4>
           <input
             type="text"
             class="form-control"
             placeholder="categoria nueva"
+            formControlName="categoriaNueva"
           />
         </div>
         <div class="col-12">
           <h4>Descripcion</h4>
-          <textarea formControlName="descripcion" class="form-control" aria-label="With textarea"></textarea>
+          <textarea
+            formControlName="descripcion"
+            class="form-control"
+            aria-label="With textarea"
+            required
+          ></textarea>
         </div>
         <div class="col-md-4">
           <h4>Tipo de Revista</h4>
-          <select formControlName ="tipoRevista" id="inputState" class="form-select">
+          <select
+            formControlName="tipoRevista"
+            id="inputState"
+            class="form-select"
+          >
             <option selected>Seleccione una opcion</option>
             <option>Pagada</option>
             <option>Gratis</option>
@@ -40,37 +64,47 @@
         </div>
         <div class="col-md-3">
           <h4>Precio de Suscripcion Q</h4>
-          <input formControlName="precioRevi" type="number" class="form-control"/>
+          <input
+            formControlName="precio"
+            type="number"
+            class="form-control"
+            required="number"
+          />
         </div>
         <div class="col-md-4">
           <h4>Revista PDF</h4>
-          <input formControlName="revista" type="file" class="form-control" />
+          <input
+          (change)="fileUploadInAngular($event)"
+            type="file"
+            class="form-control"
+            required
+          />
         </div>
         <div class="col-1">
-          <button type="submit" class="btn btn-primary">Publicar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="publicRForm.invalid">Publicar</button>
         </div>
       </form>
       <form class="row g-4">
-        <div class="col-md-2 ">
+        <div class="col-md-2">
           <h4>Tags</h4>
           <div *ngFor="let etiqueta of etiquetas" class="form-check">
             <input
               class="form-check-input"
               type="checkbox"
               value=""
-              name = "{{etiqueta.etiqueta}}"
-              (change) = "onchange()"
-              [(ngModel)]= "etiqueta.seleccionado"
+              name="{{ etiqueta.etiqueta }}"
+              (change)="onchange()"
+              [(ngModel)]="etiqueta.seleccionado"
               id="flexCheckDefault"
             />
             <label class="form-check-label" for="flexCheckDefault">
-              {{etiqueta.etiqueta}}
+              {{ etiqueta.etiqueta }}
             </label>
           </div>
         </div>
         <div class="col-md-2">
           <h4>Crear</h4>
-          <input 
+          <input
             type="text"
             class="form-control"
             placeholder="Nueva Etiqueta"

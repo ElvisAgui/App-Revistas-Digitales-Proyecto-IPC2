@@ -22,9 +22,7 @@ CREATE TABLE comentario(usuario VARCHAR(35) NOT NULL, contenido VARCHAR(150), id
 
 CREATE TABLE  suscripcion(usuario VARCHAR(35) NOT NULL, revista VARCHAR(35) NOT NULL, id INT auto_increment, fecha DATE NOT NULL, pagado BOOLEAN NOT NULL, CONSTRAINT PK_id_suscripcion PRIMARY KEY (id), CONSTRAINT FK_usuario_suscripcion FOREIGN KEY (usuario) REFERENCES usuario(nombre), CONSTRAINT FK_revista_comentario FOREIGN KEY (revista) REFERENCES (titulo));
 
-CREATE TABLE edicion(codigo INT NOT NULL, fecha DATE NOT NULL, descripcion VARCHAR(100), revista_pdf VARCHAR(60), CONSTRAINT PK_codigo PRIMARY KEY (codigo)));
-
-CREATE TABLE revista_Edicion(codigo INT NOT NULL, revista VARCHAR(35) NOT NULL, CONSTRAINT PK_codigo_edicion PRIMARY KEY (codigo), CONSTRAINT FK_codigo  FOREIGN KEY (codigo) REFERENCES edicion(codigo), CONSTRAINT FK_revista_comentario FOREIGN KEY (revista) REFERENCES revista(titulo));
+CREATE TABLE edicion(codigo INT NOT NULL, fecha DATE NOT NULL, descripcion VARCHAR(150) NOT NULL, revista_pdf VARCHAR(200) NOT NULL, revista VARCHAR(35) NOT NULL, content_type VARCHAR(20) NOT NULL, CONSTRAINT PK_codigo PRIMARY KEY (codigo), CONSTRAINT FK_revista_edicion FOREIGN KEY (revista) REFERENCES revista(titulo));
 
 CREATE TABLE anuncio(anuncio VARCHAR(60) NOT NULL, anunciante VARCHAR(35) NOT NULL, precio INT NOT NULL, id INT auto_increment, CONSTRAINT PK_etiqueta_anuncio PRIMARY KEY (id));
 
