@@ -9,26 +9,24 @@ import javax.servlet.http.Part;
 public class Revista {
 
     private String titulo;
-    private String categoriaNueva;
     private String categoria;
+    private String categoriaNueva;
     private String descripcion;
     private String tipoRevista;
     private Integer precio;
-    private Part revista;
     private String editor;
 
     public Revista() {
 
     }
 
-    public Revista(String titulo, String categoriaNueva, String categoria, String descripcion, String tipoRevista, Integer precio, Part revista, String editor) {
+    public Revista(String titulo, String categoria, String categoriaNueva, String descripcion, String tipoRevista, Integer precio, Part revista, String editor) {
         this.titulo = titulo;
-        this.categoriaNueva = categoriaNueva;
         this.categoria = categoria;
+        this.categoriaNueva = categoriaNueva;
         this.descripcion = descripcion;
         this.tipoRevista = tipoRevista;
         this.precio = precio;
-        this.revista = revista;
         this.editor = editor;
     }
 
@@ -80,20 +78,17 @@ public class Revista {
         this.precio = precio;
     }
 
-    public Part getRevista() {
-        return revista;
-    }
-
-    public void setRevista(Part revista) {
-        this.revista = revista;
-    }
-
     public String getEditor() {
         return editor;
     }
 
     public void setEditor(String editor) {
         this.editor = editor;
+    }
+
+    @Override
+    public String toString() {
+        return "Revista{" + "titulo=" + titulo + ", categoriaNueva=" + categoriaNueva + ", categoria=" + categoria + ", descripcion=" + descripcion + ", tipoRevista=" + tipoRevista + ", precio=" + precio + ", editor=" + editor + '}';
     }
 
 }

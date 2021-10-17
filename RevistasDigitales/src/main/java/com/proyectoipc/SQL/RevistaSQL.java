@@ -24,6 +24,9 @@ public class RevistaSQL {
 
     public void guardarRevista(Revista revista) {
         int precio_Global = 0;
+        if (revista.getTipoRevista().equalsIgnoreCase("Gratis")) {
+            revista.setPrecio(precio_Global);
+        }
         boolean permisosInicial = true;
         String consulta = "INSERT INTO revista(titulo, editor, categoria, precio, costo_Global, suscripcion, reaccionar, comentar) VALUES (?,?,?,?,?,?,?,?)";
         try {

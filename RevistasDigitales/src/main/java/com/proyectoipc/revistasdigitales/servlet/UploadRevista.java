@@ -60,6 +60,7 @@ public class UploadRevista extends HttpServlet {
         }
         file.write(path + "/" + version+ nombreArchivo);
         File archivo = new File(path + "/" + version+ nombreArchivo);
+        System.out.println(revista.toString());
         this.revistaSQL.guardarCategoria(revista);
         this.revistaSQL.guardarRevista(revista);
         this.revistaSQL.guardarEdicion(revista, archivo.toString(), fileName);

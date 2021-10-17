@@ -42,7 +42,7 @@ export class PublicRevistaComponent implements OnInit {
       categoriaNueva: [null],
       descripcion: [null, Validators.required],
       tipoRevista: [null, Validators.required],
-      precio: [null, Validators.required],
+      precio: [0, Validators.required],
       editor:[this.navrService.usuario.usuario]
     });
   }
