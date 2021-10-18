@@ -20,6 +20,9 @@ export class PublicRevistaComponent implements OnInit {
   categorias: Categoria[] = [];
   selectedFile: File | null = null;
   revista!: Revista;
+  etiquetaNueva = '';
+  valid = false;
+  fecha = "";
   
   constructor(
     private router: Router,
@@ -51,7 +54,10 @@ export class PublicRevistaComponent implements OnInit {
   public publicarRevista() {
     if (this.publicRForm.valid && this.selectedFile != null) {
       this.revista = this.publicRForm.value;
+      this.revista.etiquetaNueva = this.etiquetaNueva;
       this.revista.etiquetas = this.etiquetas;
+      this.revista.fecha = this.fecha;
+      console.log(this.revista);
       this.file.crearRevista(this.revista).subscribe(
         (data) => {
           this.enviarRevista();
@@ -70,7 +76,6 @@ export class PublicRevistaComponent implements OnInit {
     if (this.selectedFile != null) {
       this.file.fileUpload(this.selectedFile).subscribe((data) => {
         this.popAfirmation();
-          console.log(this.publicRForm.value);
           this.router.navigate(['home-editor']);
       },
         (error) => {
@@ -81,6 +86,7 @@ export class PublicRevistaComponent implements OnInit {
 
   
   public fileUploadInAngular(event: Event){
+    this.valido();
     const files = (event.target as  HTMLInputElement).files;
     if (files != null) {
       this.selectedFile = files.item(0);
@@ -89,7 +95,18 @@ export class PublicRevistaComponent implements OnInit {
   }
   
   onchange() {
+    this.valido();
     console.log(this.etiquetas);
+  }
+
+  public modificarEtiquetaNueva(event: Event){
+    this.etiquetaNueva = (<HTMLInputElement>event.target).value;
+  }
+
+  public modificarFecha(event: Event){
+    this.fecha = (<HTMLInputElement>event.target).value;
+    this.valido();
+    console.log(this.fecha);
   }
 
   public popAfirmation() {
@@ -103,4 +120,12 @@ export class PublicRevistaComponent implements OnInit {
   public popDatosInvalidos() {
     Swal.fire('Error', 'Algun valor incorrecto', 'error');
   }
+  
+  public valido(){
+    if (this.publicRForm.valid && this.selectedFile != null && this.fecha != "") {
+      this.valid= true;
+    }
+  }
+
+
 }

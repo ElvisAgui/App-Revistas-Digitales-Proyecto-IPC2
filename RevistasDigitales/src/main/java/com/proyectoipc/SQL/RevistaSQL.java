@@ -1,5 +1,6 @@
 package com.proyectoipc.SQL;
 
+import com.proyectoipc.Entidades.Etiqueta;
 import com.proyectoipc.Entidades.Revista;
 import com.proyectoipc.conexionSQL.Conexion;
 import java.sql.Connection;
@@ -11,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -49,14 +52,12 @@ public class RevistaSQL {
     }
 
     public void guardarEdicion(Revista revista, String path, String contenType) {
-        LocalDateTime localDate = LocalDateTime.now();
-        DateTimeFormatter ad = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String consulta = "INSERT INTO edicion(codigo, fecha, descripcion, revista_pdf, revista, content_type) VALUES (?,?,?,?,?,?)";
         try {
             conexion = Conexion.getConexion();
             query = conexion.prepareStatement(consulta);
             query.setInt(1, this.codigo());
-            query.setDate(2, this.getFecha(ad.format(localDate)));
+            query.setDate(2, this.getFecha(revista.getFecha()));
             query.setString(3, revista.getDescripcion());
             query.setString(4, path);
             query.setString(5, revista.getTitulo());
@@ -88,15 +89,52 @@ public class RevistaSQL {
         }
     }
 
+    public List<Revista> revistas(boolean filtroAutor, String editor) {
+        List<Revista> revistas = new ArrayList<>();
+        String consulta;
+        try {
+            if (filtroAutor) {
+                consulta = "SELECT * FROM revista WHERE editor =?";
+                conexion = Conexion.getConexion();
+                query = conexion.prepareStatement(consulta);
+                query.setString(1, editor);
+                result = query.executeQuery();
+            } else {
+                consulta = "SELECT * FROM revista";
+                conexion = Conexion.getConexion();
+                query = conexion.prepareStatement(consulta);
+                result = query.executeQuery();
+            }
+            while (result.next()) {
+                Revista temp = new Revista();
+                temp.setTitulo(result.getString("titulo"));
+                temp.setEditor(result.getString("editor"));
+                temp.setCategoria(result.getString("categoria"));
+                temp.setPrecio(result.getInt("precio"));
+                temp.setSuscripcion(result.getBoolean("suscripcion"));
+                temp.setReaccionar(result.getBoolean("reaccionar"));
+                temp.setComentar(result.getBoolean("comentar"));
+                revistas.add(temp);
+            }
+        } catch (SQLException e) {
+            System.out.println("erro en listar las Revistas");
+        } finally {
+            this.cierre();
+        }
+        return revistas;
+    }
+
     private int codigo() {
         return (int) (Math.random() * 999999);
     }
 
     private Date getFecha(String localDate) throws ParseException {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = null;
         java.util.Date nFecha = formato.parse(localDate);
         fecha = new java.sql.Date(nFecha.getTime());
+
+        return fecha;
 
         return fecha;
     }

@@ -2,11 +2,12 @@ export class Etiqueta {
 
     etiqueta: String;
     seleccionado: boolean;
+    id: String;
 
-
-    constructor(etiqueta: String, seleccionado: boolean){
+    constructor(etiqueta: String, seleccionado: boolean, id: String){
         this.etiqueta= etiqueta;
         this.seleccionado= seleccionado;
+        this.id =id;
     }
 
 

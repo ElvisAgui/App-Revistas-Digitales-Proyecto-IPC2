@@ -1,5 +1,6 @@
 package com.proyectoipc.Entidades;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,20 +17,16 @@ public class Revista {
     private String tipoRevista;
     private Integer precio;
     private String editor;
+    private String etiquetaNueva;
     private List<Etiqueta> etiquetas= new ArrayList<>();
-
+    private boolean suscripcion;
+    private boolean reaccionar;
+    private boolean comentar;
+    private String fecha;
+    
+    
     public Revista() {
 
-    }
-
-    public Revista(String titulo, String categoria, String categoriaNueva, String descripcion, String tipoRevista, Integer precio, String editor) {
-        this.titulo = titulo;
-        this.categoria = categoria;
-        this.categoriaNueva = categoriaNueva;
-        this.descripcion = descripcion;
-        this.tipoRevista = tipoRevista;
-        this.precio = precio;
-        this.editor = editor;
     }
 
     
@@ -90,6 +87,15 @@ public class Revista {
         this.editor = editor;
     }
 
+    public String getEtiquetaNueva() {
+        return etiquetaNueva;
+    }
+
+    public void setEtiquetaNueva(String etiquetaNueva) {
+        this.etiquetaNueva = etiquetaNueva;
+    }
+    
+
     public List<Etiqueta> getEtiquetas() {
         return etiquetas;
     }
@@ -97,13 +103,48 @@ public class Revista {
     public void setEtiquetas(List<Etiqueta> etiquetas) {
         this.etiquetas = etiquetas;
     }
-    
-    
+
+    public boolean isSuscripcion() {
+        return suscripcion;
+    }
+
+    public void setSuscripcion(boolean suscripcion) {
+        this.suscripcion = suscripcion;
+    }
+
+    public boolean isReaccionar() {
+        return reaccionar;
+    }
+
+    public void setReaccionar(boolean reaccionar) {
+        this.reaccionar = reaccionar;
+    }
+
+    public boolean isComentar() {
+        return comentar;
+    }
+
+    public void setComentar(boolean comenar) {
+        this.comentar = comenar;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 
     @Override
     public String toString() {
-        return "Revista{" + "titulo=" + titulo + ", categoriaNueva=" + categoriaNueva + ", categoria=" + categoria + ", descripcion=" + descripcion + ", tipoRevista=" + tipoRevista + ", precio=" + precio + ", editor=" + editor + '}';
+        return "Revista{" + "titulo=" + titulo + ", categoria=" + categoria + ", categoriaNueva=" + categoriaNueva + ", descripcion=" + descripcion + ", tipoRevista=" + tipoRevista + ", precio=" + precio + ", editor=" + editor + ", etiquetaNueva=" + etiquetaNueva + ", etiquetas=" + etiquetas + ", suscripcion=" + suscripcion + ", reaccionar=" + reaccionar + ", comentar=" + comentar + ", fecha=" + fecha + '}';
     }
+    
+    
+    
+    
+
     
 
 }

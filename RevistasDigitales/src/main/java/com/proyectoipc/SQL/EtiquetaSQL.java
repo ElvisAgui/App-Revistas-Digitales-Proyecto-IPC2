@@ -35,9 +35,55 @@ public class EtiquetaSQL {
             }
         } catch (SQLException e) {
             System.out.println("erro en listar las etiquetas");
+        } finally {
+            this.cierre();
         }
 
         return etiquetas;
+    }
+
+    public void etiquetasRevista(Revista revista) {
+        String consulta = "SELECT * FROM revist_Etiqueta WHERE revista=?";
+        List<Etiqueta> etiquetas = new ArrayList<>();
+        revista.setEtiquetas(etiquetas);
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setString(1, revista.getTitulo());
+            result = query.executeQuery();
+            while (result.next()) {
+                Etiqueta temp = new Etiqueta();
+                temp.setId(result.getInt("id"));
+                temp.setEtiqueta(result.getString("etiqueta"));
+                temp.setSeleccionado(true);
+                revista.getEtiquetas().add(temp);
+            }
+        } catch (SQLException e) {
+            System.out.println("erro en listar las etiquetas de revistas "+ e.getMessage());
+        } finally {
+            this.cierre();
+        }
+    }
+
+    public void nuevaEtiqueta(Revista revista) {
+        if (revista.getEtiquetaNueva() != null && !revista.getEtiquetaNueva().equalsIgnoreCase("")) {
+            Etiqueta etiqueta = new Etiqueta();
+            etiqueta.setSeleccionado(true);
+            etiqueta.setEtiqueta(revista.getEtiquetaNueva());
+            String consulta = "INSERT INTO etiqueta(nombre_Etiqueta) VALUES (?)";
+            try {
+                conexion = Conexion.getConexion();
+                query = conexion.prepareStatement(consulta);
+                query.setString(1, revista.getEtiquetaNueva());
+                query.executeUpdate();
+                revista.getEtiquetas().add(etiqueta);
+            } catch (SQLException ex) {
+                System.out.println("Error insertar etiqueta nueva" + ex.getMessage());
+            } finally {
+                cierre();
+            }
+        }
+
     }
 
     public void guardarEtiquetas(Revista revista) {

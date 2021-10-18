@@ -13,27 +13,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Las Nuevas Culturas de la Juventud</td>
+                  <tr *ngFor="let revista of revistas; let i= index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{revista.titulo}}</td>
                     <td>
                       <button class="btn btn-success">General</button>
                       <button class="btn btn-warning" (click) = " PrmisosClick()">Permisos</button>
                     </td>
                     <td>
                       <button class="btn btn-danger" (click)="edicionClick()" >Edicion</button>
-                      <button class="btn btn-info">Etiquetas</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>La cocina Italian</td>
-                    <td>
-                      <button class="btn btn-success">General</button>
-                      <button class="btn btn-warning" (click) = " PrmisosClick()">Permisos</button>
-                    </td>
-                    <td>
-                      <button class="btn btn-danger" (click)="edicionClick()">Edicion</button>
                       <button class="btn btn-info">Etiquetas</button>
                     </td>
                   </tr>

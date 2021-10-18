@@ -82,7 +82,7 @@
           />
         </div>
         <div class="col-1">
-          <button type="submit" class="btn btn-primary" [disabled]="publicRForm.invalid">Publicar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!this.valid">Publicar</button>
         </div>
       </form>
       <form class="row g-4">
@@ -109,6 +109,15 @@
             type="text"
             class="form-control"
             placeholder="Nueva Etiqueta"
+            (input) = 'modificarEtiquetaNueva($event)'
+          />
+        </div>
+        <div class="col-md-2">
+          <h4>Fecha</h4>
+          <input
+            type="date"
+            class="form-control"
+            (input) = 'modificarFecha($event)'
           />
         </div>
       </form>

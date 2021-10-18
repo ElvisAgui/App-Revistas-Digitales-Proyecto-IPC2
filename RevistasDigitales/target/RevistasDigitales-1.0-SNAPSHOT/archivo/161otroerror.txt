@@ -1,0 +1,46 @@
+hola, esta es un documento para la calificacion de lenguajes formales y de programacion.
+Por lo general, el reconoconocimiento de patrones es importante en el funcionamiento de cualquier programa.
+Los tokens que debe aceptar este pseudo analizador son:
+
+Indentificador
+Numero
+Decimal
+Puntuacion
+Operador
+Agrupacion
+
+Los espacios en blanco y saltos de linea solo indican la separacion de palabras
+
+Ejemplos de Identificador:
+MiIdentificador , OtroId , idConNumero5 test234234test, 2121test
+
+Ejemplos de Numero :
+25 58 2584 1987 25 68 65897 5569745586547
+
+Ejemplos de Decimal :
+25.25 0.25 58.2 0.0 21.1987 2014.13171 12. 25.20 .25 85.58.65 85..58.2 98.75..5
+
+Ejemplos de puntiacion :
+punto (.)
+coma (,)
+punto y coma (;)
+dos puntos (:)
+
+Ejemplos de op aritmeticos :
+Suma ( + )
+Resta ( - )
+Multiplicacion ( * )
+division ( / )
+modulo (  )
+
+Ejemplos de agrupacion :
+Parentesis derecho (
+Parentesis izquierdo )
+Corchete izquierdo [
+corchete derecho ] 
+llave izquierda {
+llave derecha }
+otro-error
+&
+d1902.3f()&*
+

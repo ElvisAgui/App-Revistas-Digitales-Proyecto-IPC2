@@ -1,3 +1,5 @@
+import { Revista } from './../../../modelo/Revista/revista';
+import { FileService } from './../../services/file.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,8 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-revista.component.css']
 })
 export class ListRevistaComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  
+  revistas: Revista[] = [];
+  constructor(private router: Router, private file: FileService) { 
+    this.file.getListaRevistas().subscribe((revistas: Revista[]) => {
+      this.revistas = revistas;
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -19,5 +26,6 @@ export class ListRevistaComponent implements OnInit {
 
   public edicionClick(){
     this.router.navigate(['Edicion']);
+    console.log(this.revistas);
   }
 }
