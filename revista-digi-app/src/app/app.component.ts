@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'revista-digi-app';
-  saludo = ' hola como estas perrra';
+
 }

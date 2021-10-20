@@ -15,12 +15,15 @@ export class EdicionesComponent implements OnInit {
   ediciones:Edicion[] = [];
   descripcion!: String;
   revistaPdf!: String;
+  titulo!:String;
+  mostrar = false;
 
 
   constructor(private router: Router, private revista: RevistaService, private navar: NvarServiceService) {
       this.revista.getEdiciones().subscribe((ediciones:Edicion[])=>{
         this.ediciones = ediciones;
-        this.revistaPdf = "/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/target/RevistasDigitales-1.0-SNAPSHOT/archivo/242retiro.pdf";
+        this.titulo = navar.revista.titulo;
+
       },
       (error)=>{
         // error en el servidor
@@ -44,22 +47,23 @@ export class EdicionesComponent implements OnInit {
     })
   }
 
-  public mostrarPDF(edicion: Edicion){
-    this.revistaPdf = edicion.revista;
-    Swal.fire({
-      imageUrl: '/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/target/RevistasDigitales-1.0-SNAPSHOT/archivo/242retiro.pdf',
-      imageHeight: 1500,
-      imageAlt: 'A tall image'
-    })
+
+  public goToLink(){
+   this.mostrar = !this.mostrar;
   }
 
+  public ocultar(){
+    this.mostrar = false;
+   }
 
-  public goToLink(url: string){
-    window.open(url+'/create-account');
-  }
+   public mostrarR(edicion:Edicion){
+    this.revistaPdf = this.revista.downloadImage(edicion);
+    this.mostrar = true;
+   }
 
   onNavigate(){ 
-    this.router.navigateByUrl('/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/target/RevistasDigitales-1.0-SNAPSHOT/archivo/242retiro.pdf'); 
-    window.location.href='/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/target/RevistasDigitales-1.0-SNAPSHOT/archivo/242retiro.pdf'; }
+    this.router.navigateByUrl(""+this.revistaPdf); 
+    window.location.href=""+this.revistaPdf}
+   
 
 }

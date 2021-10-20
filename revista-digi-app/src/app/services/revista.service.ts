@@ -25,5 +25,9 @@ export class RevistaService {
     return this.httpClient.get<Edicion[]>(this.API_URL+ "EdicionControl?titulo="+this.revista.titulo);
   }
 
+
+  public downloadImage(edicion: Edicion): string {
+    return this.API_URL+"EdicionControl?paht="+edicion.revista;
+  }
 }
 

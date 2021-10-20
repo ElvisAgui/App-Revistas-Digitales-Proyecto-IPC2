@@ -72,20 +72,21 @@ public class UploadRevista extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String esEdicion = request.getParameter("esEdicion");
+        String revistaNom = "Revista.pdf";
         int version = this.numVersion();
         this.etiqueta = new EtiquetaSQL();
         this.revistaSQL = new RevistaSQL();
         this.categoriaSQL = new CategoriaSQL();
         Part file = request.getPart("datafile");
         String fileName = file.getHeader("Content-type");
-        String nombreArchivo = file.getSubmittedFileName();
+//        String nombreArchivo = file.getSubmittedFileName();
         String path = this.getServletConfig().getServletContext().getRealPath("/archivo");
         File directorio = new File(path);
         if (!directorio.exists()) {
             directorio.mkdir();
         }
-        file.write(path + "/" + version + nombreArchivo);
-        File archivo = new File(path + "/" + version + nombreArchivo);
+        file.write(path + "/" + version +revistaNom);
+        File archivo = new File(path + "/" + version + revistaNom);
         if (esEdicion != null) {
             this.revistaSQL.guardarEdicion(revista, archivo.toString(), fileName);
         } else {

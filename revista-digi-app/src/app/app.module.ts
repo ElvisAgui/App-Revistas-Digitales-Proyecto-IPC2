@@ -15,7 +15,6 @@ import { ActulizarRevistaComponent } from './Editor/actulizar-revista/actulizar-
 import { EdicionComponent } from './Editor/edicion/edicion.component';
 import { PermisosRevistaComponent } from './Editor/permisos-revista/permisos-revista.component';
 import { EdicionesComponent } from './Editor/ediciones/ediciones.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +35,7 @@ import { EdicionesComponent } from './Editor/ediciones/ediciones.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
