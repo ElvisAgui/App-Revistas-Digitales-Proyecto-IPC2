@@ -1,3 +1,5 @@
+import { EdicionesComponent } from './Editor/ediciones/ediciones.component';
+import { ActulizarRevistaComponent } from './Editor/actulizar-revista/actulizar-revista.component';
 import { PermisosRevistaComponent } from './Editor/permisos-revista/permisos-revista.component';
 import { ListRevistaComponent } from './Editor/list-revista/list-revista.component';
 import { AutenticacionService } from './services/autenticacion.service';
@@ -44,9 +46,20 @@ const routes: Routes = [
     canActivate: [AutenticacionService],
   },
   {
+    path: 'Modidificacion-General',
+    component: ActulizarRevistaComponent,
+    canActivate: [AutenticacionService],
+  },
+  {
+    path: 'Ediciones',
+    component: EdicionesComponent,
+    canActivate: [AutenticacionService],
+  },
+  {
     path: '**',
     component: InicioComponent,
   },
+  
 ];
 
 @NgModule({

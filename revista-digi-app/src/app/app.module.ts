@@ -14,6 +14,7 @@ import { ListRevistaComponent } from './Editor/list-revista/list-revista.compone
 import { ActulizarRevistaComponent } from './Editor/actulizar-revista/actulizar-revista.component';
 import { EdicionComponent } from './Editor/edicion/edicion.component';
 import { PermisosRevistaComponent } from './Editor/permisos-revista/permisos-revista.component';
+import { EdicionesComponent } from './Editor/ediciones/ediciones.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PermisosRevistaComponent } from './Editor/permisos-revista/permisos-rev
     ListRevistaComponent,
     ActulizarRevistaComponent,
     EdicionComponent,
-    PermisosRevistaComponent
+    PermisosRevistaComponent,
+    EdicionesComponent
   ],
   imports: [
     BrowserModule,

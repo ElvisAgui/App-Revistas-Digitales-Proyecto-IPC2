@@ -15,6 +15,8 @@ CREATE TABLE usuario_Etiqueta(etiqueta VARCHAR(25) NOT NULL, usuario VARCHAR(35)
 CREATE TABLE categoria(nombre_Categoria VARCHAR(30) NOT NULL, CONSTRAINT PK_categoria PRIMARY KEY (nombre_Categoria))
 
 CREATE TABLE revista(titulo VARCHAR(35) NOT NULL, editor VARCHAR(35) NOT NULL,  categoria VARCHAR(30) NOT NULL, precio INT NOT NULL, costo_Global INT NOT NULL, suscripcion BOOLEAN NOT NULL, reaccionar BOOLEAN NOT NULL, comentar BOOLEAN NOT NULL,  CONSTRAINT PK_titulo_revista PRIMARY KEY (titulo), CONSTRAINT FK_editor_revista FOREIGN KEY (editor) REFERENCES usuario(nombre), CONSTRAINT FK_categori_revista FOREIGN KEY (categoria) REFERENCES categoria(nombre_Categoria));
+alter table revista modify precio DECIMAL(8,2);
+alter table revista modify costo_Global DECIMAL(8,2);
 
 CREATE TABLE revist_Etiqueta(id INT auto_increment, etiqueta VARCHAR(25) NOT NULL, revista VARCHAR(35) NOT NULL, CONSTRAINT PK_id_revista_etiqueta PRIMARY KEY (id), CONSTRAINT FK_etiqueta FOREIGN KEY (etiqueta) REFERENCES etiqueta(nombre_Etiqueta), CONSTRAINT FK_revista FOREIGN KEY (revista) REFERENCES revista(titulo));
 

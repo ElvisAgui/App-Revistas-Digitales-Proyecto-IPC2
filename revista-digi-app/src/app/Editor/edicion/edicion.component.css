@@ -16,7 +16,7 @@ body{
     }
     
     .card{
-    height: 450px;
+    height: 550px;
     margin-top: auto;
     margin-bottom: auto;
     width: 450px;
@@ -26,11 +26,13 @@ body{
     
    
     
-    .card-header h1, h4{
+    .card-header h1,h2,h4{
     color: rgb(5, 56, 65);
     }
     
-   
+    .card-header h2{
+        color: rgb(0, 0, 0);
+        }
     
     .input-group-prepend span{
     width: 50px;

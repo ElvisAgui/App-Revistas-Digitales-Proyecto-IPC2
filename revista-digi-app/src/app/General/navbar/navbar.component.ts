@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
   
   esEditor!: boolean;
   usuario!:Usuario;
+  totalRevistas!: number;
+  
   constructor(private router: Router, private navrService: NvarServiceService) { }
   
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class NavbarComponent implements OnInit {
     }else{
       this.esEditor=false;
     }
+    this.totalRevistas = this.navrService.totalRevistas;
   }
 
   public exit(){

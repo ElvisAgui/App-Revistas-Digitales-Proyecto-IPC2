@@ -21,6 +21,12 @@ export class FileService {
     return this.httpClient.put<void>(this.API_URL, formData);
   }
 
+  public fileUploadEdicion(fileToUpload: File): Observable<void> {
+    const formData: FormData = new FormData();
+    formData.append('datafile', fileToUpload, fileToUpload.name);
+    return this.httpClient.put<void>(this.API_URL+"?esEdicion=true", formData);
+  }
+
   public crearRevista(revista: Revista): Observable<void>{
     return this.httpClient.post<void>(this.API_URL, revista); 
   }
@@ -30,5 +36,6 @@ export class FileService {
     return this.httpClient.get<Revista[]>(this.API_URL+ "?editor="+this.editor);
   }
 
+  
 }
  

@@ -9,7 +9,8 @@
                     <th>#</th>
                     <th>REVISTA</th>
                     <th>MODIFICACIONES</th> 
-                    <th>ACTUALIZAR</th>                    
+                    <th> PUBLICAR</th> 
+                    <th>VER</th>                    
                   </tr>
                 </thead>
                 <tbody>
@@ -17,12 +18,14 @@
                     <th scope="row">{{i+1}}</th>
                     <td>{{revista.titulo}}</td>
                     <td>
-                      <button class="btn btn-success">General</button>
-                      <button class="btn btn-warning" (click) = " PrmisosClick()">Permisos</button>
+                      <button class="btn btn-success" (click)="generalClick(revista)">General</button>
+                      <button class="btn btn-warning" (click)="prmisosClick(revista)">Permisos</button>
                     </td>
                     <td>
-                      <button class="btn btn-danger" (click)="edicionClick()" >Edicion</button>
-                      <button class="btn btn-info">Etiquetas</button>
+                      <button class="btn btn-danger" (click)="edicionClick(revista)" >Edicion</button>
+                    </td>
+                    <td>
+                      <button class="btn btn-info" (click)="edicionesClick(revista)" >Ediciones</button>
                     </td>
                   </tr>
                 </tbody>

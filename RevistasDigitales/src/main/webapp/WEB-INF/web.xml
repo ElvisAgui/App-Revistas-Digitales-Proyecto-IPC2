@@ -16,6 +16,14 @@
         <servlet-name>UploadRevista</servlet-name>
         <servlet-class>com.proyectoipc.revistasdigitales.servlet.UploadRevista</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PermisosControl</servlet-name>
+        <servlet-class>com.proyectoipc.revistasdigitales.servlet.PermisosControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EdicionControl</servlet-name>
+        <servlet-class>com.proyectoipc.revistasdigitales.servlet.EdicionControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorUsuario</servlet-name>
         <url-pattern>/ControladorUsuario</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>UploadRevista</servlet-name>
         <url-pattern>/UploadRevista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PermisosControl</servlet-name>
+        <url-pattern>/PermisosControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EdicionControl</servlet-name>
+        <url-pattern>/EdicionControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

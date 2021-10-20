@@ -59,7 +59,7 @@ public class EtiquetaSQL {
                 revista.getEtiquetas().add(temp);
             }
         } catch (SQLException e) {
-            System.out.println("erro en listar las etiquetas de revistas "+ e.getMessage());
+            System.out.println("erro en listar las etiquetas de revistas " + e.getMessage());
         } finally {
             this.cierre();
         }
@@ -94,6 +94,11 @@ public class EtiquetaSQL {
         }
     }
 
+    /**
+     * guarda una unica etiqueta en la base de datos 
+     * @param etiqueta
+     * @param titulo
+     */
     private void guardarIndividua(Etiqueta etiqueta, String titulo) {
         String consulta = "INSERT INTO revist_Etiqueta(etiqueta, revista) VALUES (?,?)";
         try {
@@ -109,6 +114,20 @@ public class EtiquetaSQL {
         }
     }
 
+    public void borrarEtiquetas(String titulo){
+        String consulta = "DELETE FROM revist_Etiqueta WHERE revista=?";
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setString(1, titulo);
+            query.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error borrar la etiqueta" + ex.getMessage());
+        } finally {
+            cierre();
+        }
+    }
+    
     private void cierre() {
         if (conexion != null) {
             try {

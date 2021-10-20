@@ -1,6 +1,5 @@
 package com.proyectoipc.Entidades;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class Revista {
     private String categoriaNueva;
     private String descripcion;
     private String tipoRevista;
-    private Integer precio;
+    private double precio;
     private String editor;
     private String etiquetaNueva;
     private List<Etiqueta> etiquetas= new ArrayList<>();
@@ -71,11 +70,11 @@ public class Revista {
         this.tipoRevista = tipoRevista;
     }
 
-    public Integer getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Integer precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

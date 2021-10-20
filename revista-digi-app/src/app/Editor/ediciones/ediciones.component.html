@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="conteiner">
+        <div class="card-header">
+            <h2 class="h1 text-center">Mis Revistas Publicadas</h2>
+            <table class="table table-success table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>DESCRIPCION</th>
+                    <th>FECHA PUBLICACION</th> 
+                    <th>REVISTA PDF</th>                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let edicion of ediciones let i= index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>
+                      <button class="btn btn-link" (click)="mostrarDesc(edicion)">Ver</button>
+                    </td>
+                    <td>
+                      <button class="btn btn-danger" >{{edicion.fecha}}</button>
+                    </td>
+                    <td>
+                      <a class="btn btn-danger" (click)="onNavigate()"> prueva</a> 
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>

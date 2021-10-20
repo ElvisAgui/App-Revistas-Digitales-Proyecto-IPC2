@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
+body {
+    font-family: 'Roboto';
+    background: #4568DC;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B06AB3, #4568DC);
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.card {
+  position: absolute;
+  top: 125px;
+  left: 125px;
+  height: 500px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 450px;
+  font-family: 'Roboto';
+  background: #4568DC;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #B06AB3, #4568DC);
+}
+.card2{
+  position: absolute;
+  top: 125px;
+  left: 650px;
+  height: 500px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 450px;
+  font-family: 'Roboto';
+  background: #4568DC;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #594eb9, #4568DC);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #574ead, #4568DC);
+  }
+
+.card-header h1, h3 {
+  color: rgb(255, 255, 255);
+}
+
+.card-header h2 {
+  color: rgb(7, 7, 7);
+}
+.input-group-prepend span {
+  width: 50px;
+  background-color: #ffc312;
+  color: black;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+  color: white;
+}
+
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width: 100px;
+}
+
+

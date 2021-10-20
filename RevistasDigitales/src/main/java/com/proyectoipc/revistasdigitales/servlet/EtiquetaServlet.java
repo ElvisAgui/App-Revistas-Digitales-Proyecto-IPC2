@@ -1,12 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.proyectoipc.revistasdigitales.servlet;
 
 import com.google.gson.Gson;
+import com.proyectoipc.Entidades.Etiqueta;
+import com.proyectoipc.Entidades.Revista;
 import com.proyectoipc.SQL.EtiquetaSQL;
+import com.proyectoipc.comvert.RevistaConvert;
+import java.io.BufferedReader;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EtiquetaServlet extends HttpServlet {
 
     private EtiquetaSQL etiquetaSQL;
+    private Revista revista;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,13 +37,27 @@ public class EtiquetaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        
-        
     }
-    
-    
-    
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RevistaConvert revistaConver = new RevistaConvert(Revista.class);
+        this.revista = revistaConver.fromJson(lector(request));
+        this.etiquetaSQL.borrarEtiquetas(this.revista.getTitulo());
+        this.etiquetaSQL.guardarEtiquetas(revista);
+
+    }
+
+    private String lector(HttpServletRequest request) throws IOException {
+        BufferedReader reader = request.getReader();
+        String body = "";
+        String line = reader.readLine();
+        while (line != null) {
+            body = body + line;
+            line = reader.readLine();
+        }
+        return body;
+    }
 
 }

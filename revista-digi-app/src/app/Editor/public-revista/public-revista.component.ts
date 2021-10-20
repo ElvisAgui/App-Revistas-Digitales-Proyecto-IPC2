@@ -76,7 +76,7 @@ export class PublicRevistaComponent implements OnInit {
     if (this.selectedFile != null) {
       this.file.fileUpload(this.selectedFile).subscribe((data) => {
         this.popAfirmation();
-          this.router.navigate(['home-editor']);
+        this.router.navigate(['home-editor']);
       },
         (error) => {
           this.popDatosInvalidos();
