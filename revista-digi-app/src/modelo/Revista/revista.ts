@@ -6,7 +6,7 @@ export class Revista {
   categoriaNueva!: String;
   descripcion!: String;
   tipoRevista!: String;
-  precio!: String;
+  precio!: number;
   editor!: String;
   etiquetaNueva!:String;
   etiquetas: Etiqueta[] = [];
@@ -15,7 +15,7 @@ export class Revista {
   comentar!   :boolean;
   fecha!: String;
  
-  constructor(titulo: String, categoria: String, categoriaNueva: String, descripcion: String, precio: String, tipoRevista: String, editor:String,etiquetaNueva: String, etiquetas: Etiqueta[], suscripcion: boolean, reaccionar: boolean, comentar: boolean){
+  constructor(titulo: String, categoria: String, categoriaNueva: String, descripcion: String, precio: number, tipoRevista: String, editor:String,etiquetaNueva: String, etiquetas: Etiqueta[], suscripcion: boolean, reaccionar: boolean, comentar: boolean){
     this.titulo = titulo;
     this.categoria = categoria;
     this.categoriaNueva = categoriaNueva;

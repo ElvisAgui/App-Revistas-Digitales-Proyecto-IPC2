@@ -20,14 +20,25 @@ export class EdicionesComponent implements OnInit {
 
 
   constructor(private router: Router, private revista: RevistaService, private navar: NvarServiceService) {
-      this.revista.getEdiciones().subscribe((ediciones:Edicion[])=>{
-        this.ediciones = ediciones;
-        this.titulo = navar.revista.titulo;
-
-      },
-      (error)=>{
-        // error en el servidor
-      });
+      if (this.navar.usuario.tipoCuenta === 1) {
+        this.revista.getEdiciones().subscribe((ediciones:Edicion[])=>{
+          this.ediciones = ediciones;
+          this.titulo = navar.revista.titulo;
+        },
+        (error)=>{
+          // error en el servidor
+        });
+      }else if(this.navar.usuario.tipoCuenta === 2){
+        this.revista.getEdicionesS().subscribe((ediciones:Edicion[])=>{
+          this.ediciones = ediciones;
+          this.titulo = this.navar.suscripcion.revista;
+        },
+        (error)=>{
+          // error en el servidor
+        });
+      }
+    
+    
    }
 
   ngOnInit(): void {

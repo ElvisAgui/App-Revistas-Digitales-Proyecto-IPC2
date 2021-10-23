@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<body>
+  <div class="d-flex" >
+    <div class="card col-sm-2" style="background-color:#6ce7b2">
+      <div class="card" style="width: 18rem">
+        <div class="card-header bg-primary">OPCIONES</div>
+        <div class="card-body bg-secondary">
+          <h5>Bucar por Etiquetas</h5>
+          <br />
+          <select id="inputState" class="">
+            <option selected>categorias existentes</option>
+            <option>hola</option>
+          </select>
+          <br />
+          <button class="btn btn-primary">Buscar</button>
+          <br />
+          <h5>Bucar por Categorias</h5>
+          <select id="inputState" class="">
+            <option selected>categorias existentes</option>
+            <option>hola</option>
+          </select>
+          <br />
+          <button class="btn btn-primary">Buscar</button>
+        </div>
+        <div class="card-footer bg-info">resultado footer</div>
+      </div>
+    </div>
+    <div class="card col-sm-7" style="background-color:#6ce7b2">
+      <div class="row g-4" >
+        <div
+          *ngFor="let revista of revistasMAl; let i = index"
+          class="card col-sm-4" style="background-color:#6ce7b2"
+        >
+          <input type="hidden" (change)="valor(i)" />
+          <input type="hidden" (change)="bloqueo(revista)"/>
+          <div class="card" style="width: 18rem" [hidden]="ocultar" >
+            <div class="card-header bg-warning">
+                <h5>Titulo: {{ revista.titulo }}</h5>
+            </div>
+            <div class="card-body bg-info">
+              <h5>Editor: {{ revista.editor }}</h5>
+              <br />
+              <h5>Categoria: {{ revista.categoria }}</h5>
+            </div>
+            <div class="card-footer bg-danger">
+              <button class="d-inline p-2 btn btn-dark text-white" (click)="prev(revista)" >previsualiar</button>
+              <div class="d-inline p-2" [hidden]="!ocultarB" >
+                <button class="btn btn-dark text-white"  (click)="sucripcion(revista)" [disabled]="!revista.suscripcion">Suscribirme</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card col-sm-3" style="background-color:#6ce7b2">
+        <div class="card">
+            <iframe name="myFrame"  style="width:100%; height:350px;" frameborder="0">
+                <img [src]="fotoPerfil" alt="fotoPerfil" class="img-thumbnail">
+
+            </iframe>
+        </div>
+    </div>
+  </div>
+</body>
+
+<app-footer></app-footer>

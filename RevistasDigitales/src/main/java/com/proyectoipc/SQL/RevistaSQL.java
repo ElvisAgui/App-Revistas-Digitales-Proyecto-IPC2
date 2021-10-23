@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -127,6 +129,26 @@ public class RevistaSQL {
         return (int) (Math.random() * 999999);
     }
 
+    public double precioGlobal(String titulo) {
+        double precio = 0;
+        try {
+            String consulta = "SELECT costo_Global FROM revista WHERE titulo =?";
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setString(1, titulo);
+            result = query.executeQuery();
+            while (result.next()) {
+                precio = result.getDouble("costo_Global");
+            }
+        } catch (SQLException e) {
+            System.out.println("erro obetener precio Globla "+ e.getMessage());
+        } finally {
+            this.cierre();
+        }
+        return precio;
+
+    }
+
     /**
      * transforma la fecha para ser ingresada en la base de datos
      *
@@ -142,9 +164,11 @@ public class RevistaSQL {
 
         return fecha;
     }
+
     /**
-     *  actuliza los permisos de la revista 
-     * @param revista 
+     * actuliza los permisos de la revista
+     *
+     * @param revista
      */
     public void ActulizarPermisos(Revista revista) {
         String consulta = "UPDATE revista SET  suscripcion=?, reaccionar=?, comentar=? WHERE titulo=? ";
@@ -157,7 +181,7 @@ public class RevistaSQL {
             query.setString(4, revista.getTitulo());
             query.executeUpdate();
         } catch (SQLException ex) {
-            System.out.println("Fallo en actulizar los permisos"+ ex.getMessage());
+            System.out.println("Fallo en actulizar los permisos" + ex.getMessage());
         } finally {
             cierre();
         }

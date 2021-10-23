@@ -51,6 +51,27 @@ public class UsuarioSQL {
         }
     }
 
+    public void generalPerfil(Usuario usuario, boolean retorn) {
+        String consulta = "INSERT INTO preferencias_Usuario(hobiies, descripcion, usuario) VALUES (?,?,?)";
+        String actulizar = "UPDATE preferencias_Usuario SET  hobiies=?, descripcion=? WHERE usuario=?";
+        try {
+            conexion = Conexion.getConexion();
+            if (exist(usuario, retorn)) {
+                query = conexion.prepareStatement(actulizar);
+            } else {
+                query = conexion.prepareStatement(consulta);
+            }
+            query.setString(1, usuario.getHobbie());
+            query.setString(2, usuario.getDescripcion());
+            query.setString(3, usuario.getUsuario());
+            query.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error en registrar preferncias " + ex.getMessage());
+        } finally {
+            cierre();
+        }
+    }
+
     public Usuario logUsuario() {
         Usuario usuarioLogi = null;
         this.newPassword = encripPass.ecnode(this.usuario.getPassword());
@@ -74,6 +95,52 @@ public class UsuarioSQL {
         }
 
         return usuarioLogi;
+    }
+
+    public boolean exist(Usuario usuario, boolean retorn) {
+        boolean existe = false;
+        String consulta = "SELECT * FROM preferencias_Usuario WHERE usuario=?";
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setString(1, usuario.getUsuario());
+            result = query.executeQuery();
+            while (result.next()) {
+                if (retorn) {
+                    usuario.setDescripcion(result.getString("descripcion"));
+                    usuario.setHobbie(result.getString("hobiies"));
+                    usuario.setFoto(result.getString("foto"));
+                    usuario.setType(result.getString("content_type"));
+                }
+                existe = true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("erro en exit " + ex.getMessage());
+        }
+        return existe;
+    }
+
+    public void guardarFoto(String usuario, String path, String contenType) {
+        Usuario temp = new Usuario();
+        temp.setUsuario(usuario);
+        String consulta = "INSERT INTO preferencias_Usuario(foto, content_type) VALUES (?,?) WHERE usuario=?";
+        String actulizar = "UPDATE preferencias_Usuario SET foto=?, content_type=? WHERE usuario=?";
+         try {
+            conexion = Conexion.getConexion();
+            if (exist(temp, false)) {
+                query = conexion.prepareStatement(actulizar);
+            } else {
+                query = conexion.prepareStatement(consulta);
+            }
+            query.setString(1, path);
+            query.setString(2, contenType);
+            query.setString(3, temp.getUsuario());
+            query.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error en registrar preferncias foto " + ex.getMessage());
+        } finally {
+            cierre();
+        }
     }
 
     private void cierre() {

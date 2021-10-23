@@ -1,3 +1,4 @@
+import { Usuario } from './../../modelo/Usuario/Usuario.model';
 import { Categoria } from '../../modelo/Revista/categoria';
 import { Etiqueta } from '../../modelo/Revista/etiqueta';
 import { HttpClient } from '@angular/common/http';
@@ -29,6 +30,14 @@ export class EtiquetaSerService {
 
   public actulizarEtiquetas(revista: Revista): Observable<void> {
     return this.httpClient.put<void>(this.API_URL+ "EtiquetaServlet", revista); 
+  }
+
+  public actulizarEtiquetasUsuario(usuario: Usuario): Observable<void> {
+    return this.httpClient.put<void>(this.API_URL+ "EtiquetaServlet?esUs=true", usuario); 
+  }
+
+  public etiquetaNueva(etiqueta: Etiqueta): Observable<void>{
+    return this.httpClient.post<void>(this.API_URL+ "EtiquetaServlet", etiqueta); 
   }
 }
  

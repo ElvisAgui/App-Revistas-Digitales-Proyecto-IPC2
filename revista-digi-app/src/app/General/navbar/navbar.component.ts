@@ -1,3 +1,4 @@
+import { Revista } from 'src/modelo/Revista/revista';
 import { Usuario } from './../../../modelo/Usuario/Usuario.model';
 import { InicioComponent } from './../inicio/inicio.component';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
   esEditor!: boolean;
   usuario!:Usuario;
   totalRevistas!: number;
+  
   
   constructor(private router: Router, private navrService: NvarServiceService) { }
   
@@ -32,11 +34,26 @@ export class NavbarComponent implements OnInit {
   }
 
   public homeClic(){
-    this.router.navigate(['home-editor']);
+    if (this.usuario.tipoCuenta === 1) {
+      this.router.navigate(['home-editor']);
+    }else{
+      if (this.usuario.tipoCuenta === 2) {
+        this.router.navigate(['home-Usuario']);
+      }else{
+        if (this.usuario.tipoCuenta === 3) {
+          this.router.navigate(['home-Admin']);
+        }
+      }
+    } 
   }
+  
 
   public misRevistasClick(){
     this.router.navigate(['Mis-Revistas']);
+  }
+
+  public PerfilClick(){
+    this.router.navigate(['Perfil-Usuario']);
   }
 
 

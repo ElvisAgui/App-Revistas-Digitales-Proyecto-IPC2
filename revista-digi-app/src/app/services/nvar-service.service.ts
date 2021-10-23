@@ -1,3 +1,4 @@
+import { Suscripcion } from './../../modelo/Usuario/suscripcion';
 import { Usuario } from './../../modelo/Usuario/Usuario.model';
 import { Injectable, OnInit } from '@angular/core';
 import { Revista } from 'src/modelo/Revista/revista';
@@ -10,6 +11,10 @@ export class NvarServiceService implements OnInit {
   usuario!: Usuario;
   revista!: Revista;
   totalRevistas!: number;
+  revistas:Revista[] = [];
+  fecha!:String;
+  suscripcion!:Suscripcion;
+  
 
   constructor() { }
 

@@ -16,7 +16,7 @@ align-content: center;
 }
 
 .card{
-height: 370px;
+height: 400px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
@@ -34,7 +34,7 @@ color: white;
 cursor: pointer;
 }
 
-.card-header h2{
+.card-header h2, h6{
 color: white;
 }
 

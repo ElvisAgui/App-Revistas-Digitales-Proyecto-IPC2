@@ -1,7 +1,14 @@
+import { Etiqueta } from '../Revista/etiqueta';
+
 export class Usuario {
   usuario: String;
   password: String;
   tipoCuenta: number;
+  hobbie!: String;
+  descripcion!: String;
+  etiquetas: Etiqueta[] = [];
+  foto!: String;
+  type!: String;
 
   constructor(usuario: String, password: String, tipoCuenta: number) {
     this.usuario = usuario;
@@ -30,9 +37,6 @@ export class Usuario {
   }
 
   get getTipoCuenta() {
-    return this.tipoCuenta ;
+    return this.tipoCuenta;
   }
-
-
-
 }

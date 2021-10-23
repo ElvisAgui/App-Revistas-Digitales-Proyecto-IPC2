@@ -49,7 +49,21 @@
                 Iniciar Sesion
               </button>
             </div>
+            <h6>fecha por fines de calificacion</h6>
+
           </form>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"
+                ><i class="fas fa-user"></i
+              ></span>
+            </div>
+            <input
+              type="date"
+              class="form-control"
+              (input)="modificarFecha($event)"
+            /> 
+          </div>
         </div>
         <div class="card-footer">
           <div class="d-flex justify-content-center links">

@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+
+body {
+  background-image: url("./../../../resources/susciption.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+
+.img-thumbnail{
+  width: 350px;
+  height: 200px;
+  border-radius:150px;
+  border:10px solid #666;
+}
+
+.card2{
+    position: absolute;
+    top: 100px;
+    left: 5px;
+    height: 550px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 500px;
+    font-family: 'Roboto';
+    background-color: rgba(119, 114, 114, 0.5) !important;
+    }
+
+    .card{
+      position: absolute;
+      top: 100px;
+      left: 520px;
+      height: 550px;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: 400px;
+      font-family: 'Roboto';
+      background-color: rgba(119, 114, 114, 0.5) !important;
+      }
+  
+
+.card-header h1,
+h3, h2 {
+  color: rgb(14, 188, 231);
+}
+
+.form-check-label{
+    color: rgb(5, 6, 41);
+}
+
+.input-group-prepend span {
+  width: 50px;
+  background-color: #ffc312;
+  color: black;
+  border: 0 !important;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+  color: white;
+}
+
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width: 100px;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}

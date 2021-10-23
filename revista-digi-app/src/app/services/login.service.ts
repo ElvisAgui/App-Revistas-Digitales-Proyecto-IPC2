@@ -16,4 +16,8 @@ export class LoginService {
   public crearUsuario(usuarioN: Usuario): Observable<Usuario> {
     return this.httpClient.post<Usuario>(this.API_URL + "ControladorUsuario", usuarioN);
   }
+
+  public perfil(usuarioN: Usuario): Observable<void> {
+    return this.httpClient.put<void>(this.API_URL + "ControladorUsuario", usuarioN);
+  }
 }

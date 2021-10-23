@@ -53,9 +53,15 @@ export class RegistroComponent implements OnInit {
 
   public verificacion(usuario: Usuario){
     if ( usuario != null) {
-      InicioComponent.autenticado=true;
-      this.popAfirmation();
-      this.router.navigate(['home-editor']);
+      if (usuario.tipoCuenta === 1) {
+        InicioComponent.autenticado=true;
+        this.popAfirmation();
+        this.router.navigate(['home-editor']);
+      }else if (usuario.tipoCuenta === 2) {
+        InicioComponent.autenticado=true;
+        this.popAfirmation();
+        this.router.navigate(['Perfil-Usuario']);
+      } 
     }else{
       InicioComponent.autenticado=false;
       this.popErro();

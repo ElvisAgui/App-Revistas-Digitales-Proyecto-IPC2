@@ -25,6 +25,10 @@ export class RevistaService {
     return this.httpClient.get<Edicion[]>(this.API_URL+ "EdicionControl?titulo="+this.revista.titulo);
   }
 
+  public getEdicionesS(): Observable<Edicion[]>{
+    return this.httpClient.get<Edicion[]>(this.API_URL+ "EdicionControl?titulo="+this.nvar.suscripcion.revista);
+  }
+
 
   public downloadImage(edicion: Edicion): string {
     return this.API_URL+"EdicionControl?paht="+edicion.revista;

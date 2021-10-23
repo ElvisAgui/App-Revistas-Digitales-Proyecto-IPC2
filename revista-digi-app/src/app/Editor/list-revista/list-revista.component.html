@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <body>
     <div class="conteiner">
-        <div class="card-header">
+        <div class="card-header" [hidden]="!esEditor">
             <h2 class="h1 text-center">Mis Revistas Publicadas</h2>
             <table class="table table-success table-striped">
                 <thead>
@@ -31,6 +31,38 @@
                 </tbody>
               </table>
         </div>
+        <div class="card-header" [hidden]="esEditor">
+          <h2 class="h1 text-center">Mis Revista</h2>
+          <table class="table table-success table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>REVISTA</th>
+                  <th>COMUNIDAD</th> 
+                  <th>EDICIONES</th> 
+                  <th>PAGO</th>                     
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let suscipcion of suscripciones; let i= index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{suscipcion.revista}}</td>
+                  <td>
+                    <button class="btn btn-success" (click)="comunidad(suscipcion)" >Ir</button> 
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="listarEdiciones(suscipcion)" >Listar</button>
+                  </td> 
+                  <td [hidden]="suscipcion.activo">
+                    <button class="btn btn-info" (click)="pagar(suscipcion)">Pagar</button>
+                  </td>
+                  <td [hidden]="!suscipcion.activo"> 
+                    todo bien
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
     </div>
 </body>
 <app-footer></app-footer>

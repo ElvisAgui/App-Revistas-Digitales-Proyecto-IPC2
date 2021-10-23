@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card2">
+                <div class="card-header">
+                  <h1>Suscripcion a Revista: ---> {{revista.titulo}} </h1>
+                </div>
+                <div class="card-body">
+                  <form class="row g-3" [formGroup]="suscripcionForm" (ngSubmit)="suscripcion()"> 
+                    <div class="col-12">
+                        <h2>precio por mes  Q{{revista.precio}}</h2>
+                      </div>
+                    <div class="col-md-6">
+                      <h2 for="exampleFormControlTextarea1" class="form-label">Fecha de Suscripcion (Pago)</h2>
+                      <input formControlName="fecha_pago" type="date" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                      <h2 for="exampleFormControlTextarea1" class="form-label">Meses a suscribirse (pagar)</h2>
+                      <input formControlName="fecha_vencimiento" type="number" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 for="exampleFormControlTextarea1" class="form-label">Ingresar Contraseña</h2>
+                        <input formControlName="password" type="password" class="form-control">
+                      </div>
+                      <div class="col-md-6">
+                        <h2 for="exampleFormControlTextarea1" class="form-label">Confimar</h2>
+                        <button type="submit" [disabled]="suscripcionForm.invalid" class=" form-control btn btn-warning">Suscribirme</button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<app-footer></app-footer>
+

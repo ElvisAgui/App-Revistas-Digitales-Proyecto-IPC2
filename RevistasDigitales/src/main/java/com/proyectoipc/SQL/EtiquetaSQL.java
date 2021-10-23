@@ -2,6 +2,7 @@ package com.proyectoipc.SQL;
 
 import com.proyectoipc.Entidades.Etiqueta;
 import com.proyectoipc.Entidades.Revista;
+import com.proyectoipc.Entidades.Usuario;
 import com.proyectoipc.conexionSQL.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -65,6 +66,29 @@ public class EtiquetaSQL {
         }
     }
 
+    public void etiquetasUsuario(Usuario usuario) {
+        String consulta = "SELECT * FROM usuario_Etiqueta WHERE usuario=?";
+        List<Etiqueta> etiquetas = new ArrayList<>();
+        usuario.setEtiquetas(etiquetas);
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setString(1, usuario.getUsuario());
+            result = query.executeQuery();
+            while (result.next()) {
+                Etiqueta temp = new Etiqueta();
+                temp.setId(result.getInt("id"));
+                temp.setEtiqueta(result.getString("etiqueta"));
+                temp.setSeleccionado(true);
+                usuario.getEtiquetas().add(temp);
+            }
+        } catch (SQLException e) {
+            System.out.println("erro en listar las etiquetas de revistas " + e.getMessage());
+        } finally {
+            this.cierre();
+        }
+    }
+
     public void nuevaEtiqueta(Revista revista) {
         if (revista.getEtiquetaNueva() != null && !revista.getEtiquetaNueva().equalsIgnoreCase("")) {
             Etiqueta etiqueta = new Etiqueta();
@@ -89,18 +113,32 @@ public class EtiquetaSQL {
     public void guardarEtiquetas(Revista revista) {
         for (Etiqueta etiqueta : revista.getEtiquetas()) {
             if (etiqueta.isSeleccionado()) {
-                this.guardarIndividua(etiqueta, revista.getTitulo());
+                this.guardarIndividua(etiqueta, revista.getTitulo(), false);
+            }
+        }
+    }
+    
+    public void guardarEtiquetaUS(Usuario usuario){
+        for (Etiqueta etiqueta : usuario.getEtiquetas()) {
+            if (etiqueta.isSeleccionado()) {
+                this.guardarIndividua(etiqueta, usuario.getUsuario(), true);
             }
         }
     }
 
     /**
-     * guarda una unica etiqueta en la base de datos 
+     * guarda una unica etiqueta en la base de datos
+     *
      * @param etiqueta
      * @param titulo
      */
-    private void guardarIndividua(Etiqueta etiqueta, String titulo) {
-        String consulta = "INSERT INTO revist_Etiqueta(etiqueta, revista) VALUES (?,?)";
+    private void guardarIndividua(Etiqueta etiqueta, String titulo, boolean esUs) {
+        String consulta ;
+        if (esUs) {
+            consulta = "INSERT INTO usuario_Etiqueta(etiqueta, usuario) VALUES (?,?)";
+        }else{
+            consulta= "INSERT INTO revist_Etiqueta(etiqueta, revista) VALUES (?,?)";
+        }
         try {
             conexion = Conexion.getConexion();
             query = conexion.prepareStatement(consulta);
@@ -114,8 +152,14 @@ public class EtiquetaSQL {
         }
     }
 
-    public void borrarEtiquetas(String titulo){
-        String consulta = "DELETE FROM revist_Etiqueta WHERE revista=?";
+    public void borrarEtiquetas(String titulo, boolean esUs) {
+
+        String consulta;
+        if (esUs) {
+            consulta = "DELETE FROM usuario_Etiqueta WHERE usuario=?";
+        } else {
+            consulta = "DELETE FROM revist_Etiqueta WHERE revista=?";
+        }
         try {
             conexion = Conexion.getConexion();
             query = conexion.prepareStatement(consulta);
@@ -127,7 +171,7 @@ public class EtiquetaSQL {
             cierre();
         }
     }
-    
+
     private void cierre() {
         if (conexion != null) {
             try {

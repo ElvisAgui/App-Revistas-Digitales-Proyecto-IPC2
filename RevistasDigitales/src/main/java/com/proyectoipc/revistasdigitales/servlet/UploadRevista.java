@@ -46,14 +46,17 @@ public class UploadRevista extends HttpServlet {
         this.revistaSQL = new RevistaSQL();
         this.etiqueta = new EtiquetaSQL();
         if (editor != null) {
+            System.out.println("entre a editor");
             List<Revista> revistas = this.revistaSQL.revistas(true, editor);
             for (Revista revista1 : revistas) {
                 this.etiqueta.etiquetasRevista(revista1);
             }
             response.getWriter().append(s.toJson(revistas));
         } else {
+            System.out.println("no hay editor");
             List<Revista> revistas = this.revistaSQL.revistas(false, "");
             for (Revista revista1 : revistas) {
+                System.out.println(revista1.toString());
                 this.etiqueta.etiquetasRevista(revista1);
             }
             response.getWriter().append(s.toJson(revistas));
@@ -85,7 +88,7 @@ public class UploadRevista extends HttpServlet {
         if (!directorio.exists()) {
             directorio.mkdir();
         }
-        file.write(path + "/" + version +revistaNom);
+        file.write(path + "/" + version + revistaNom);
         File archivo = new File(path + "/" + version + revistaNom);
         if (esEdicion != null) {
             this.revistaSQL.guardarEdicion(revista, archivo.toString(), fileName);

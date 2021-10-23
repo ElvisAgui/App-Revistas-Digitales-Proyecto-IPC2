@@ -15,6 +15,11 @@ import { ActulizarRevistaComponent } from './Editor/actulizar-revista/actulizar-
 import { EdicionComponent } from './Editor/edicion/edicion.component';
 import { PermisosRevistaComponent } from './Editor/permisos-revista/permisos-revista.component';
 import { EdicionesComponent } from './Editor/ediciones/ediciones.component';
+import { SuscripHomeComponent } from './Suscriptor/suscrip-home/suscrip-home.component';
+import { HomePrincipalComponent } from './Suscriptor/home-principal/home-principal.component';
+import { SuscripcionComponent } from './Suscriptor/suscripcion/suscripcion.component';
+import { ComunidadComponent } from './Suscriptor/comunidad/comunidad.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';    
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,12 @@ import { EdicionesComponent } from './Editor/ediciones/ediciones.component';
     ActulizarRevistaComponent,
     EdicionComponent,
     PermisosRevistaComponent,
-    EdicionesComponent
+    EdicionesComponent,
+    SuscripHomeComponent,
+    HomePrincipalComponent, 
+    SuscripcionComponent,
+    ComunidadComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,
