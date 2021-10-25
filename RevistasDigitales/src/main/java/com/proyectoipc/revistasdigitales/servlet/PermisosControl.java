@@ -31,7 +31,11 @@ public class PermisosControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        this.revistaSQL = new RevistaSQL();
+        RevistaConvert revistaConver = new RevistaConvert(Revista.class);
+        Revista revista = revistaConver.fromJson(lector(request));
+        double precio = revista.getPrecioGlobal();
+        this.revistaSQL.actulizarCostoDia(precio, revista.getTitulo());
     }
 
     @Override

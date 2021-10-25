@@ -20,4 +20,7 @@ export class LoginService {
   public perfil(usuarioN: Usuario): Observable<void> {
     return this.httpClient.put<void>(this.API_URL + "ControladorUsuario", usuarioN);
   }
+
+  
+
 }

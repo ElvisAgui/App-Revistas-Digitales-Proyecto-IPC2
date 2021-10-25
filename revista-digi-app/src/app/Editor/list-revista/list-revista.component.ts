@@ -1,3 +1,4 @@
+import { RevistaService } from './../../services/revista.service';
 import { Comentario } from './../../../modelo/Revista/comentario';
 import { Suscripcion } from './../../../modelo/Usuario/suscripcion';
 import { SuscripService } from './../../services/suscrip.service';
@@ -20,9 +21,14 @@ export class ListRevistaComponent implements OnInit {
   usuario!: Usuario;
   suscripciones: Suscripcion[]= [];
   esEditor = false;
+  esSuscriptor = false;
+  esAdmin = false;
+  ocultarInput = false;
+  porcentajeGlobal = "";
+
   
 
-  constructor(private router: Router, private file: FileService, private navar: NvarServiceService, private suscrSer: SuscripService) { 
+  constructor(private router: Router, private file: FileService, private navar: NvarServiceService, private suscrSer: SuscripService, private revsSer: RevistaService) { 
     this.usuario = this.navar.usuario;
     if (this.navar.usuario.tipoCuenta === 1 ) {
       this.esEditor = true;
@@ -31,11 +37,18 @@ export class ListRevistaComponent implements OnInit {
         this.navar.totalRevistas = this.revistas.length;
       });
     }else if(this.navar.usuario.tipoCuenta === 2){
+      this.esSuscriptor = true;
       this.suscrSer.getListaRevistas().subscribe((suscripction: Suscripcion[])=>{
           this.suscripciones = suscripction;
           console.log(suscripction);
           console.log(this.suscripciones);
       }); 
+    }else if(this.navar.usuario.tipoCuenta === 3){
+        this.esAdmin = true;
+        this.file.getListaRevistasT().subscribe((revistas: Revista[]) => {
+          this.revistas = revistas;
+          this.navar.totalRevistas = this.revistas.length;
+        });
     }
     this.revistas = this.navar.revistas;
    
@@ -89,11 +102,42 @@ export class ListRevistaComponent implements OnInit {
     this.router.navigate(['Ediciones']);
   }
   
+  public actulizarPorcentajeIndivi(event: Event){
+    this.porcentajeGlobal=(<HTMLInputElement>event.target).value;
+    
 
-  
+  }
+
+  public ActulizarCosto(revista: Revista){
+    if (this.porcentajeGlobal != "") {
+      revista.precioGlobal = this.porcentajeGlobal
+      this.revsSer.actulizarCostoDia(revista).subscribe((data)=>{
+        this.popActulizacion();
+        this.inputMostrar();
+      },
+      (error)=>{
+        this.popEror();
+      });
+    }else{
+      this.popEror();
+    }
+  }
+
+  public inputMostrar(){
+    this.ocultarInput = !this.ocultarInput;
+  }
 
   public popAfirmation() {
     Swal.fire('Comentario Registrado', 'proceso completado', 'success');
+  }
+
+  public popEror() {
+    Swal.fire('error', 'valor invalido', 'error');
+  }
+
+  public popActulizacion(){
+    Swal.fire('Actulizado', 'Proceso con exito', 'success');
+
   }
  
   

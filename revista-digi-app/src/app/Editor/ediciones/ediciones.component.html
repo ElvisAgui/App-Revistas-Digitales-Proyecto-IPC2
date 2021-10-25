@@ -9,7 +9,8 @@
                     <th>#</th>
                     <th>DESCRIPCION</th>
                     <th>FECHA PUBLICACION</th> 
-                    <th>REVISTA PDF</th>                    
+                    <th>REVISTA PDF</th> 
+                    <th>Descargar PDF</th> 
                   </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,9 @@
                     <td>
                       <a class="btn btn-primary" (click)="mostrarR(edicion)" href={{revistaPdf}} target="myFrame" >Mostrar</a> 
                       <a class="btn btn-info" (click)="ocultar()" target="myFrame" >Ocultar</a> 
+                    </td>
+                    <td>
+                      <a class="btn btn-info" *ngIf="mostrar" (click)="descargar(edicion)">Descargar</a> 
                     </td>
                   </tr>
                 </tbody>

@@ -1,6 +1,5 @@
 package com.proyectoipc.SQL;
 
-import com.proyectoipc.Entidades.Comentario;
 import com.proyectoipc.Entidades.Reaccion;
 import com.proyectoipc.conexionSQL.Conexion;
 import java.sql.Connection;
@@ -78,6 +77,20 @@ public class ReaccionSQL {
         java.util.Date nFecha = formato.parse(localDate);
         fecha = new java.sql.Date(nFecha.getTime());
         return fecha;
+    }
+    
+    public void actulizarPrecioGlobal(double precio){
+         String consulta = "UPDATE usuario set costo_Global=?";
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setDouble(1, precio);
+            query.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("error en actulizar precio global" + e.getMessage());
+        } finally {
+            cierre();
+        }
     }
 
     private void cierre() {

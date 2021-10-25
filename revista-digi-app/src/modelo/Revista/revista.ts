@@ -14,6 +14,7 @@ export class Revista {
   reaccionar! :boolean;
   comentar!   :boolean;
   fecha!: String;
+  precioGlobal!: String;
  
   constructor(titulo: String, categoria: String, categoriaNueva: String, descripcion: String, precio: number, tipoRevista: String, editor:String,etiquetaNueva: String, etiquetas: Etiqueta[], suscripcion: boolean, reaccionar: boolean, comentar: boolean){
     this.titulo = titulo;

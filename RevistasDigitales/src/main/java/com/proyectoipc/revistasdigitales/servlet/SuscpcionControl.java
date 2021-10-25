@@ -51,7 +51,7 @@ public class SuscpcionControl extends HttpServlet {
         this.conver = new SuscripcionConver(Suscripcion.class);
         this.suscripSQL = new SuscripcionSQL();
         this.suscripcion = conver.fromJson(lector(request));
-        this.suscripcion.calcularValores(revista.precioGlobal(suscripcion.getRevista()));
+        this.suscripcion.calcularValores(revista.precioGlobal());
         this.suscripSQL.insertarSiscripcion(suscripcion);
 
     }

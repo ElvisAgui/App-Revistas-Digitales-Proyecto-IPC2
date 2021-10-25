@@ -19,7 +19,8 @@ import { SuscripHomeComponent } from './Suscriptor/suscrip-home/suscrip-home.com
 import { HomePrincipalComponent } from './Suscriptor/home-principal/home-principal.component';
 import { SuscripcionComponent } from './Suscriptor/suscripcion/suscripcion.component';
 import { ComunidadComponent } from './Suscriptor/comunidad/comunidad.component';
-import { HomeAdminComponent } from './home-admin/home-admin.component';    
+import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { ReportesEditComponent } from './reportes-edit/reportes-edit.component';    
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     HomePrincipalComponent, 
     SuscripcionComponent,
     ComunidadComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    ReportesEditComponent
   ],
   imports: [
     BrowserModule,

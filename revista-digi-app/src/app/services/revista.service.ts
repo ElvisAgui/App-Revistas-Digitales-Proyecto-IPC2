@@ -29,9 +29,16 @@ export class RevistaService {
     return this.httpClient.get<Edicion[]>(this.API_URL+ "EdicionControl?titulo="+this.nvar.suscripcion.revista);
   }
 
+  public downloadPDF(edicion: Edicion): string {
+    return this.API_URL+"EdicionControl?paht="+edicion.revista+"&descarga=true";
+  }
 
   public downloadImage(edicion: Edicion): string {
     return this.API_URL+"EdicionControl?paht="+edicion.revista;
+  }
+
+  public actulizarCostoDia(revista: Revista): Observable<void>{
+    return this.httpClient.post<void>(this.API_URL+"PermisosControl", revista);
   }
 }
 

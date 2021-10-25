@@ -58,6 +58,11 @@ export class EdicionesComponent implements OnInit {
     })
   }
 
+  public descargar(edicion: Edicion){
+    const revi = this.revista.downloadPDF(edicion);
+    window.location.href=""+revi
+  }
+
 
   public goToLink(){
    this.mostrar = !this.mostrar;
@@ -74,7 +79,8 @@ export class EdicionesComponent implements OnInit {
 
   onNavigate(){ 
     this.router.navigateByUrl(""+this.revistaPdf); 
-    window.location.href=""+this.revistaPdf}
+    window.location.href=""
+  }
    
 
 }

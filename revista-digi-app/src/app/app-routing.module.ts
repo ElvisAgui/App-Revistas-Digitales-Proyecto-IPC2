@@ -1,3 +1,4 @@
+import { ReportesEditComponent } from './reportes-edit/reportes-edit.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { ComunidadComponent } from './Suscriptor/comunidad/comunidad.component';
 import { HomePrincipalComponent } from './Suscriptor/home-principal/home-principal.component';
@@ -83,6 +84,11 @@ const routes: Routes = [
   {
     path: 'home-Admin',
     component: HomeAdminComponent,
+    canActivate: [AutenticacionService],
+  },
+  {
+    path: 'Reportes-Editor',
+    component: ReportesEditComponent,
     canActivate: [AutenticacionService],
   },
   {

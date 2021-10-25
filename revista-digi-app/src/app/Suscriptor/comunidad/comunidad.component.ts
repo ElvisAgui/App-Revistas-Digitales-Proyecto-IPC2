@@ -42,8 +42,8 @@ export class ComunidadComponent implements OnInit {
     });
     this.suscrSer.getListaReacciones().subscribe((reacciones: Reaccion[])=>{
         this.reacciones = reacciones;
-        this.reacciones.forEach(reaccion => {
-          if (reaccion.usuario === this.navar.usuario.usuario && reaccion.usuario === this.revist) {
+          reacciones.forEach(reaccion => {
+          if (reaccion.usuario === this.navar.usuario.usuario && reaccion.revista === this.revist) {
             this.yaGusta = true;
           }
         });

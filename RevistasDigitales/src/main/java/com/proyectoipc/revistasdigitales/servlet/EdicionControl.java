@@ -27,13 +27,19 @@ public class EdicionControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String titulo = request.getParameter("titulo");
+        String descarga = request.getParameter("descarga");
         String path = request.getParameter("paht");
         if (titulo != null) {
             Gson s = new Gson();
             this.edicionSQL = new EdicionSQL();
             response.getWriter().append(s.toJson(this.edicionSQL.ediciones(titulo)));
         } else if (path != null) {
-            showImage(response, path);
+            if (descarga != null) {
+                showImage(response, path, true);
+
+            } else {
+                showImage(response, path, false);
+            }
         }
 
     }
@@ -44,9 +50,12 @@ public class EdicionControl extends HttpServlet {
 
     }
 
-    private void showImage(HttpServletResponse response, String path)
+    private void showImage(HttpServletResponse response, String path, boolean descarga)
             throws ServletException, IOException {
         try (BufferedInputStream fileStream = new BufferedInputStream(new FileInputStream(path))) {
+            if (descarga) {
+                response.setHeader("Content-disposition", "attachment; filename=Revista.pdf");
+            }
             response.setContentType("application/pdf");
             int data = fileStream.read();
             while (data > -1) {

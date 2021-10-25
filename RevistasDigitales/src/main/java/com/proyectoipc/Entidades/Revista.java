@@ -22,6 +22,7 @@ public class Revista {
     private boolean reaccionar;
     private boolean comentar;
     private String fecha;
+    private double precioGlobal;
     
     
     public Revista() {
@@ -134,6 +135,16 @@ public class Revista {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public double getPrecioGlobal() {
+        return precioGlobal;
+    }
+
+    public void setPrecioGlobal(double precioGlobal) {
+        this.precioGlobal = precioGlobal;
+    }
+    
+    
 
     @Override
     public String toString() {

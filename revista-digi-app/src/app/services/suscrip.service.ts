@@ -41,4 +41,8 @@ export class SuscripService {
   public crearReaccion(reaccion: Reaccion): Observable <void> {
     return this.httpClient.post<void>(this.API_URL+"ReaccionControl", reaccion);
   }
+
+  public actulizarGlobal(reaccion: Reaccion, costo:String): Observable <void> {
+    return this.httpClient.put<void>(this.API_URL+"ReaccionControl?costo="+costo, reaccion);
+  }
 }

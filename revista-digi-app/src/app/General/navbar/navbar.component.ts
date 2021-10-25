@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   
   ngOnInit(): void {
     this.usuario=this.navrService.usuario;
-    if (this.navrService.usuario.tipoCuenta === 1) {
+    if (this.navrService.usuario.tipoCuenta === 1 || this.navrService.usuario.tipoCuenta === 3) {
       this.esEditor= true;
     }else{
       this.esEditor=false;
@@ -65,6 +65,11 @@ export class NavbarComponent implements OnInit {
     this.usuario= usuario;
   }
 
+  public reportesClick(){
+    if (this.navrService.usuario.tipoCuenta === 1) {
+      this.router.navigate(['Reportes-Editor']);
+    }
+  }
 
 
 }

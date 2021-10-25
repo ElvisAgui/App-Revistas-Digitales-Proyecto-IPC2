@@ -31,7 +31,7 @@
                 </tbody>
               </table>
         </div>
-        <div class="card-header" [hidden]="esEditor">
+        <div class="card-header" [hidden]="!esSuscriptor">
           <h2 class="h1 text-center">Mis Revista</h2>
           <table class="table table-success table-striped">
               <thead>
@@ -51,7 +51,7 @@
                     <button class="btn btn-success" (click)="comunidad(suscipcion)" >Ir</button> 
                   </td>
                   <td>
-                    <button class="btn btn-danger" (click)="listarEdiciones(suscipcion)" >Listar</button>
+                    <button class="btn btn-danger" [hidden]="!suscipcion.activo" (click)="listarEdiciones(suscipcion)" >Listar</button>
                   </td> 
                   <td [hidden]="suscipcion.activo">
                     <button class="btn btn-info" (click)="pagar(suscipcion)">Pagar</button>
@@ -63,6 +63,35 @@
               </tbody>
             </table>
       </div>
+      <div class="card-header" [hidden]="!esAdmin">
+        <h2 class="h1 text-center">Revista Publicadas</h2>
+        <table class="table table-success table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>REVISTA</th> 
+                <th>Costo actual * dia %</th>
+                <th>Precio Suscripcion</th> 
+                <th>Actulizar Costo</th>  
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let revista of revistas; let i= index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{revista.titulo}}</td>
+                <td>% {{revista.precioGlobal}}</td>
+                <td>Q {{revista.precio}}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="inputMostrar()">Actulizar</button>
+                </td>
+                <td [hidden]="!ocultarInput">
+                  <input type="number" (input)="actulizarPorcentajeIndivi($event)">
+                  <button class="btn btn-danger" (click)="ActulizarCosto(revista)" >Actulizar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
     </div>
 </body>
 <app-footer></app-footer>

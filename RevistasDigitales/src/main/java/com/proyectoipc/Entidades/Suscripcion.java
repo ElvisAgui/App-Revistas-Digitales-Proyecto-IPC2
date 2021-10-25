@@ -82,8 +82,9 @@ public class Suscripcion {
 
     public void calcularValores(double precioGloval) {
         if (this.fecha_vencimiento > 0 && this.totalPago != 0) {
-            this.gananciaEditor = (this.totalPago * this.fecha_vencimiento) - precioGloval;
-            this.gananciaAdmin = (this.fecha_vencimiento * precioGloval);
+            precioGloval = (precioGloval/100);
+            this.gananciaEditor = (this.totalPago * this.fecha_vencimiento) - (this.totalPago*precioGloval*this.fecha_vencimiento);
+            this.gananciaAdmin = (this.totalPago * precioGloval*fecha_vencimiento);
         } else {
             this.gananciaAdmin = 0;
             this.gananciaEditor = 0;

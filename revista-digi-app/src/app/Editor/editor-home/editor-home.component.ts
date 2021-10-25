@@ -10,7 +10,7 @@ export class EditorHomeComponent implements OnInit {
 
   publicarRevis = "Publicar Revista";
   editarPerfil = "Editar Perfil";
-  actualizarEd = "Actulizar Edicion";
+  actualizarEd = "Reportes";
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -23,7 +23,10 @@ export class EditorHomeComponent implements OnInit {
   public listRevistasClick(){
     this.router.navigate(['Mis-Revistas']);
   }
-
+  
+  public reportesClick(){
+    this.router.navigate(['Reportes-Editor']);
+  }
 
 
 }

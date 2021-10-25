@@ -5,6 +5,7 @@ CREATE DATABASE Revistas_Digitales;
 USE Revistas_Digitales;
 
 CREATE TABLE usuario(contraseña VARCHAR(50) NOT NULL, nombre VARCHAR(35) NOT NULL, rol TINYINT NOT NULL, CONSTRAINT PK_usuario PRIMARY KEY (nombre));
+ALTER TABLE usuario ADD costo_Global DECIMAL(8,2) NULL;
 
 CREATE TABLE preferencias_Usuario(foto VARCHAR(200) NULL, content_type VARCHAR(20) NULL, hobiies VARCHAR(75) NULL, descripcion VARCHAR(100) NULL, usuario VARCHAR(35) NOT NULL , CONSTRAINT PK_descripcion PRIMARY KEY (usuario), CONSTRAINT FK_referencia_usuario FOREIGN KEY (usuario) REFERENCES usuario(nombre));
 
@@ -35,6 +36,8 @@ CREATE TABLE historial(anuncio VARCHAR(60) NOT NULL, url VARCHAR(30) NOT NULL, i
 CREATE TABLE etiqueta_anuncio(id INT auto_increment, anuncio VARCHAR(60) NOT NULL, etiqueta VARCHAR(25) NOT NULL, CONSTRAINT PK_etiqueta_anuncio PRIMARY KEY (id),CONSTRAINT FK_etiquet_anuncio FOREIGN KEY (etiqueta) REFERENCES (nombre_Etiqueta), CONSTRAINT FK_anuncio FOREIGN KEY (anuncio) REFERENCES anuncio(id));
 
 INSERT INTO usuario(contraseña, nombre, rol) VALUES ('g7gare4cs7Tjfff8j2buww==', 'ElvisAdmin', '3');
+UPDATE usuario set costo_Global="0";
 
 
---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
+
+--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

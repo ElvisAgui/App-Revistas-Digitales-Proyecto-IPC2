@@ -11,8 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +28,7 @@ public class RevistaSQL {
      * @param revista
      */
     public void guardarRevista(Revista revista) {
-        double precio_Global = 0;
+        double precio_Global = this.precioGlobal()*0.3;
         if (null != revista.getTipoRevista() && revista.getTipoRevista().equalsIgnoreCase("Gratis")) {
             revista.setPrecio(precio_Global);
         }
@@ -53,6 +51,40 @@ public class RevistaSQL {
         } finally {
             cierre();
         }
+    }
+    
+    public void actulizarCostoDia(double precio, String titulo){
+         String consulta = "UPDATE revista set costo_Global=? WHERE titulo=?";
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setDouble(1, precio);
+            query.setString(2, titulo);
+            query.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("error en actulizar precio global" + e.getMessage());
+        } finally {
+            cierre();
+        }
+    }
+
+    public double precioGlobal() {
+        double precio = 0;
+        String consulta = "SELECT costo_Global FROM usuario WHERE rol =?";
+        try {
+            conexion = Conexion.getConexion();
+            query = conexion.prepareStatement(consulta);
+            query.setInt(1, 3);
+            result = query.executeQuery();
+            while (result.next()) {                
+                precio = result.getDouble("costo_Global");
+            }
+        } catch (SQLException e) {
+            System.out.println("erro en precio global" + e.getMessage());
+        } finally {
+            this.cierre();
+        }
+        return precio;
     }
 
     /**
@@ -112,6 +144,7 @@ public class RevistaSQL {
                 temp.setEditor(result.getString("editor"));
                 temp.setCategoria(result.getString("categoria"));
                 temp.setPrecio(result.getDouble("precio"));
+                temp.setPrecioGlobal(result.getDouble("costo_Global"));
                 temp.setSuscripcion(result.getBoolean("suscripcion"));
                 temp.setReaccionar(result.getBoolean("reaccionar"));
                 temp.setComentar(result.getBoolean("comentar"));
@@ -129,25 +162,25 @@ public class RevistaSQL {
         return (int) (Math.random() * 999999);
     }
 
-    public double precioGlobal(String titulo) {
-        double precio = 0;
-        try {
-            String consulta = "SELECT costo_Global FROM revista WHERE titulo =?";
-            conexion = Conexion.getConexion();
-            query = conexion.prepareStatement(consulta);
-            query.setString(1, titulo);
-            result = query.executeQuery();
-            while (result.next()) {
-                precio = result.getDouble("costo_Global");
-            }
-        } catch (SQLException e) {
-            System.out.println("erro obetener precio Globla "+ e.getMessage());
-        } finally {
-            this.cierre();
-        }
-        return precio;
-
-    }
+//    public double precioGlobal(String titulo) {
+//        double precio = 0;
+//        try {
+//            String consulta = "SELECT costo_Global FROM revista WHERE titulo =?";
+//            conexion = Conexion.getConexion();
+//            query = conexion.prepareStatement(consulta);
+//            query.setString(1, titulo);
+//            result = query.executeQuery();
+//            while (result.next()) {
+//                precio = result.getDouble("costo_Global");
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("erro obetener precio Globla " + e.getMessage());
+//        } finally {
+//            this.cierre();
+//        }
+//        return precio;
+//
+//    }
 
     /**
      * transforma la fecha para ser ingresada en la base de datos

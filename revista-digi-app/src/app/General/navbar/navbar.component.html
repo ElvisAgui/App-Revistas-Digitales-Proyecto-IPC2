@@ -35,10 +35,19 @@
       </ul>
       <ul class="navbar-nav " *ngIf="esEditor">
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa fa-globe"></i>
-            Reportes
-          </a>
+          <div class="btn-group">
+            <button type="button" class="nav-link btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-globe"></i>
+              Reportes
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item btn btn-link" (click)="reportesClick()">Comentarios</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+          </div>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

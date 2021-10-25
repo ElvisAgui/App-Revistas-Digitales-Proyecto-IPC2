@@ -1,4 +1,3 @@
-
 package com.proyectoipc.revistasdigitales.servlet;
 
 import com.google.gson.Gson;
@@ -17,17 +16,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author elvis_agui
  */
 public class ReaccionControl extends HttpServlet {
-    
+
     private Reaccion reaccion;
     private ReaccionSQL reaccionSQL;
     private ReaccionConver convert;
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-    }
 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,11 +33,10 @@ public class ReaccionControl extends HttpServlet {
         Gson s = new Gson();
         this.reaccionSQL = new ReaccionSQL();
         if (revista != null) {
-            response.getWriter().append(s.toJson(this.reaccionSQL.reacciones(revista)));  
+            response.getWriter().append(s.toJson(this.reaccionSQL.reacciones(revista)));
         }
     }
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,9 +44,23 @@ public class ReaccionControl extends HttpServlet {
         this.convert = new ReaccionConver(Reaccion.class);
         this.reaccion = this.convert.fromJson(lector(request));
         this.reaccionSQL.guardarReacion(reaccion);
-        
+
     }
-    
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String costo = request.getParameter("costo");
+        reaccionSQL = new ReaccionSQL();
+        if (costo != null) {
+            double precio = Double.parseDouble(costo);
+            if (precio > 0) {
+                this.reaccionSQL.actulizarPrecioGlobal(precio);
+            }
+        }
+
+    }
+
     private String lector(HttpServletRequest request) throws IOException {
         BufferedReader reader = request.getReader();
         String body = "";

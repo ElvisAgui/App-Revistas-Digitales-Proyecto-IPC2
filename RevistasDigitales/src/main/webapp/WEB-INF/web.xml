@@ -36,6 +36,14 @@
         <servlet-name>ReaccionControl</servlet-name>
         <servlet-class>com.proyectoipc.revistasdigitales.servlet.ReaccionControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportsComentario</servlet-name>
+        <servlet-class>com.proyectoipc.reports.servlets.ReportsComentario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReprotsComentarioServlet</servlet-name>
+        <servlet-class>com.proyectoipc.reports.servlets.ReprotsComentarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorUsuario</servlet-name>
         <url-pattern>/ControladorUsuario</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>ReaccionControl</servlet-name>
         <url-pattern>/ReaccionControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportsComentario</servlet-name>
+        <url-pattern>/ReportsComentario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReprotsComentarioServlet</servlet-name>
+        <url-pattern>/ReprotsComentarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
