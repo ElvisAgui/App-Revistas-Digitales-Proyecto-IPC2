@@ -1,4 +1,6 @@
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/Comentario.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/servlets/ReportsSuscripcionesServlet.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/servlets/ReportReaccionServlet.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/servlets/ReprotsComentarioServlet.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/ReportsConsult.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/EdicionSQL.java
@@ -11,9 +13,11 @@
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/ReaccionSQL.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/revistasdigitales/servlet/ReaccionControl.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/conexionSQL/Conexion.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/Reaccion.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/CategoriaSQL.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/revistasdigitales/servlet/CategoriaControl.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/revistasdigitales/servlet/SuscpcionControl.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/MeGusta.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/EtiquetaSQL.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/servlets/ReportsComentario.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Categoria.java
@@ -22,12 +26,15 @@
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/encript/Encript.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/revistasdigitales/servlet/PermisosControl.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/comvert/ReaccionConver.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/GananciaEdit.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/ReportConsultEditor.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Edicion.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/Ganancia.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Usuario.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/comvert/EtiquetaConvert.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Reaccion.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/SuscripcionSQL.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/servlets/ReportsGananciaServlet.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/comvert/Convert.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/SQL/UsuarioSQL.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/revistasdigitales/servlet/EtiquetaServlet.java
@@ -36,5 +43,6 @@
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/revistasdigitales/servlet/EdicionControl.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Comentario.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/comvert/SuscripcionConver.java
+/home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/reports/entidades/Comentarios.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Revista.java
 /home/elvis_agui/Sistema_Revistas_Digitales_Proyecto2_IPC2/RevistasDigitales/src/main/java/com/proyectoipc/Entidades/Etiqueta.java

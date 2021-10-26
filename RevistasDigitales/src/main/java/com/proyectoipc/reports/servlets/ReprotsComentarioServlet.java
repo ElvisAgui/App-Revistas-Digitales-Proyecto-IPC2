@@ -33,20 +33,33 @@ public class ReprotsComentarioServlet extends HttpServlet {
             String fechaI = request.getParameter("fechaI");
             String fechaF = request.getParameter("fechaF");
             System.out.println(revista + " " + usuario + " " + fechaI + " " + fechaF);
-            this.reportServicio = new ReportServicio();
-            this.reportConulta = new ReportConsultEditor();
-            response.setContentType("application/pdf");
-            if (fechaF.equalsIgnoreCase("") || fechaI.equalsIgnoreCase("")) {
-                if (descargar != null) {
-                    response.setHeader("Content-disposition", "attachment; filename=ReporteComentario.pdf");
-                }
-                this.reportServicio.printReportComentario(response.getOutputStream(), this.reportConulta.Comentarios(revista, usuario));
+            if (usuario.equalsIgnoreCase("")) {
+                this.reportServicio = new ReportServicio();
+                this.reportConulta = new ReportConsultEditor();
+                response.setContentType("application/pdf");
+                if (fechaF.equalsIgnoreCase("") || fechaI.equalsIgnoreCase("")) {
+                    if (descargar != null) {
+                        response.setHeader("Content-disposition", "attachment; filename=ReporteComentario.pdf");
+                    }
+                    this.reportServicio.printReportComentM(response.getOutputStream(), this.reportConulta.ComentairoTotal());
+                } 
             } else {
-                 if (descargar != null) {
-                    response.setHeader("Content-disposition", "attachment; filename=ReporteComentarios.pdf");
+                this.reportServicio = new ReportServicio();
+                this.reportConulta = new ReportConsultEditor();
+                response.setContentType("application/pdf");
+                if (fechaF.equalsIgnoreCase("") || fechaI.equalsIgnoreCase("")) {
+                    if (descargar != null) {
+                        response.setHeader("Content-disposition", "attachment; filename=ReporteComentario.pdf");
+                    }
+                    this.reportServicio.printReportComentario(response.getOutputStream(), this.reportConulta.Comentarios(revista, usuario));
+                } else {
+                    if (descargar != null) {
+                        response.setHeader("Content-disposition", "attachment; filename=ReporteComentarios.pdf");
+                    }
+                    this.reportServicio.printReportComentario(response.getOutputStream(), this.reportConulta.Comentarios(fechaI, fechaF, revista, usuario));
                 }
-                this.reportServicio.printReportComentario(response.getOutputStream(), this.reportConulta.Comentarios(fechaI, fechaF, revista, usuario));
             }
+
         } catch (JRException ex) {
             System.out.println("JRException " + ex.getMessage());
         }

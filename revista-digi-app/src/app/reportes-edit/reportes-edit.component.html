@@ -1,7 +1,7 @@
 
 <app-navbar></app-navbar> 
 <body>
-<div class="container" [hidden]="!hideComentario">
+<div class="container">
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
@@ -15,13 +15,27 @@
             <input (input)="modificarFechaF($event)" type="date" class="form-control" id="">
             <h4>Filtrar por Revista?</h4>
             <form [formGroup]="loginForm">
-            <select formControlName  = "revista" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option  selected>lista de revistas</option>
+            <select  [hidden]="esEditor" formControlName  = "revista" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option [ngValue]="" selected>lista de revistas</option>
                 <option *ngFor="let revista of revistas">{{revista.titulo}}</option>
-              </select>        
-                <a (click)="showReporteComentrio()" href={{reportComentrio}} target="myFrame"  class="btn btn-info btn-lg btn-block">
+              </select>  
+              <h4>Tipor de Reporte?</h4>
+              <select [hidden]="esEditor" formControlName  = "tipoReporte" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option [ngValue]="null" selected>Elija el Reporte</option>
+                <option>Comentarios</option>
+                <option>Revista mas Gustada</option>
+                <option>Suscripciones</option>
+                <option>Ganancias</option>
+              </select>  
+              <select [hidden]="!esEditor" formControlName  = "tipoReporte" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option [ngValue]="null" selected>Elija el Reporte</option>
+                <option>5 revistas mas Populares</option>
+                <option>5 revistas mas Comentada</option>
+                <option>ganancias</option>
+              </select>      
+                <a [hidden]="loginForm.invalid" (click)="showReporteComentrio()" href={{reportComentrio}} target="myFrame"  class="btn btn-info btn-lg btn-block">
               Ver Reporte
-                </a>
+                </a> 
                 <a (click)="DesReporteComentrio()" class="btn btn-info btn-lg btn-block">
                     Descargar
             </a>
@@ -32,8 +46,8 @@
     </div>
   </div>
   <div >
-    <div *ngIf="hideComentario" class="conteiner">
-      <iframe name="myFrame" style="width:100%; height:500px;" frameborder="0"></iframe>
+    <div  class="conteiner">
+      <iframe name="myFrame" style="width:100%; height:500px;" frameborder="1"></iframe>
     </div>
   </div>
 </body>

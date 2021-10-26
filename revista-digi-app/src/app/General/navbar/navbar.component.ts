@@ -69,7 +69,11 @@ export class NavbarComponent implements OnInit {
     if (this.navrService.usuario.tipoCuenta === 1) {
       this.router.navigate(['Reportes-Editor']);
     }
+    if (this.navrService.usuario.tipoCuenta === 3) {
+      this.router.navigate(['Reportes-Editor']);
+    }
   }
 
+ 
 
 }

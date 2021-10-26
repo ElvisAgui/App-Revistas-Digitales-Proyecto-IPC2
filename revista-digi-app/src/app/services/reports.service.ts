@@ -19,4 +19,55 @@ export class ReportsService {
   public ReportsDESComentarioPDF(revista: string, fechaI: String, fechaF: String): string {
     return this.API_URL+"ReprotsComentarioServlet?revista="+revista+"&usuario="+this.nvar.usuario.usuario+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
   }
+  public ReportsComentarioTPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReprotsComentarioServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF;
+  }
+
+  public ReportsDESComentarioTPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReprotsComentarioServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
+  }
+
+  public ReportsReccionesPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportReaccionServlet?revista="+revista+"&usuario="+this.nvar.usuario.usuario+"&fechaI="+fechaI+"&fechaF="+fechaF;
+  }
+
+  public ReportsDESReaccionesPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportReaccionServlet?revista="+revista+"&usuario="+this.nvar.usuario.usuario+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
+  }
+
+  public ReportsGananciaPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsGananciaServlet?revista="+revista+"&usuario="+this.nvar.usuario.usuario+"&fechaI="+fechaI+"&fechaF="+fechaF;
+  }
+
+  public ReportsDESGacnanciaPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsGananciaServlet?revista="+revista+"&usuario="+this.nvar.usuario.usuario+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
+  }
+
+  public ReportsSucripPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsSuscripcionesServlet?revista="+revista+"&usuario="+this.nvar.usuario.usuario+"&fechaI="+fechaI+"&fechaF="+fechaF;
+  }
+
+  public ReportsDESSuscipPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsSuscripcionesServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
+  }
+
+
+  public ReportsGananciaTPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsGananciaServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF;
+  }
+
+  public ReportsDESGacnanciaTPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsGananciaServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
+  }
+
+  public ReportsSucripTPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsSuscripcionesServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF;
+  }
+
+  public ReportsDESSuscipTPDF(revista: string, fechaI: String, fechaF: String): string {
+    return this.API_URL+"ReportsSuscripcionesServlet?revista="+revista+"&usuario="+"&fechaI="+fechaI+"&fechaF="+fechaF+"&descarga=true";
+  }
+
+
+
 }

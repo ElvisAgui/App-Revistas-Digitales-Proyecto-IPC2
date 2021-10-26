@@ -44,6 +44,18 @@
         <servlet-name>ReprotsComentarioServlet</servlet-name>
         <servlet-class>com.proyectoipc.reports.servlets.ReprotsComentarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReportReaccionServlet</servlet-name>
+        <servlet-class>com.proyectoipc.reports.servlets.ReportReaccionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportsGananciaServlet</servlet-name>
+        <servlet-class>com.proyectoipc.reports.servlets.ReportsGananciaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportsSuscripcionesServlet</servlet-name>
+        <servlet-class>com.proyectoipc.reports.servlets.ReportsSuscripcionesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorUsuario</servlet-name>
         <url-pattern>/ControladorUsuario</url-pattern>
@@ -87,6 +99,18 @@
     <servlet-mapping>
         <servlet-name>ReprotsComentarioServlet</servlet-name>
         <url-pattern>/ReprotsComentarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportReaccionServlet</servlet-name>
+        <url-pattern>/ReportReaccionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportsGananciaServlet</servlet-name>
+        <url-pattern>/ReportsGananciaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportsSuscripcionesServlet</servlet-name>
+        <url-pattern>/ReportsSuscripcionesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

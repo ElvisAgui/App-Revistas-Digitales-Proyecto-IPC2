@@ -14,6 +14,7 @@ export class NvarServiceService implements OnInit {
   revistas:Revista[] = [];
   fecha!:String;
   suscripcion!:Suscripcion;
+  tipoReporte!: String;
   
 
   constructor() { }

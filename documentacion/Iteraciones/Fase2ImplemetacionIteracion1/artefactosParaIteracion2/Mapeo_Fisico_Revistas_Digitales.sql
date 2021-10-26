@@ -2,6 +2,9 @@
 
 CREATE DATABASE Revistas_Digitales;
 
+CREATE USER 'admin3'@'localhost' IDENTIFIED BY 'admin3P';
+GRANT ALL PRIVILEGES ON Revistas_Digitales.* TO 'admin3'@'localhost';
+
 USE Revistas_Digitales;
 
 CREATE TABLE usuario(contraseña VARCHAR(50) NOT NULL, nombre VARCHAR(35) NOT NULL, rol TINYINT NOT NULL, CONSTRAINT PK_usuario PRIMARY KEY (nombre));
@@ -13,7 +16,7 @@ CREATE TABLE etiqueta(nombre_Etiqueta VARCHAR(25) NOT NULL, CONSTRAINT PK_etique
 
 CREATE TABLE usuario_Etiqueta(etiqueta VARCHAR(25) NOT NULL, usuario VARCHAR(35) NOT NULL, id INT auto_increment, CONSTRAINT PK_etiqueta_Usuario PRIMARY KEY (id), CONSTRAINT FK_usuario_etiqueta FOREIGN KEY (usuario) REFERENCES usuario(nombre), CONSTRAINT FK_etiqueta_foranea FOREIGN KEY (etiqueta) REFERENCES etiqueta(nombre_Etiqueta));
 
-CREATE TABLE categoria(nombre_Categoria VARCHAR(30) NOT NULL, CONSTRAINT PK_categoria PRIMARY KEY (nombre_Categoria))
+CREATE TABLE categoria(nombre_Categoria VARCHAR(30) NOT NULL, CONSTRAINT PK_categoria PRIMARY KEY (nombre_Categoria));
 
 CREATE TABLE revista(titulo VARCHAR(35) NOT NULL, editor VARCHAR(35) NOT NULL,  categoria VARCHAR(30) NOT NULL, precio INT NOT NULL, costo_Global INT NOT NULL, suscripcion BOOLEAN NOT NULL, reaccionar BOOLEAN NOT NULL, comentar BOOLEAN NOT NULL,  CONSTRAINT PK_titulo_revista PRIMARY KEY (titulo), CONSTRAINT FK_editor_revista FOREIGN KEY (editor) REFERENCES usuario(nombre), CONSTRAINT FK_categori_revista FOREIGN KEY (categoria) REFERENCES categoria(nombre_Categoria));
 alter table revista modify precio DECIMAL(8,2);
